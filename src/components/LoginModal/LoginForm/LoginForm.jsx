@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import   {loginThunk}   from "features/applicationSlice";
 import styles from './LoginForm.module.scss'
@@ -14,8 +14,14 @@ export const LoginForm = ({activeLogin, setActiveLogin}) => {
     const dispatch = useDispatch()
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
+    const error = useSelector((state)=> state.application.error)
     const token = useSelector((state)=> state.application.token)
-    const load = useSelector((state)=> state.application.load)
+
+    useEffect(()=>{
+        if(token){
+            setActiveLogin(false)
+        }
+    },[token])
 
     const Toaster = (text) => {
       toast.error(text,);
@@ -41,11 +47,6 @@ export const LoginForm = ({activeLogin, setActiveLogin}) => {
         dispatch(loginThunk({login, password}))
         setLogin('')
         setPassword('')
-        if(token){
-            toast.success("Успешно")
-        }else{
-            toast.error("Ошибка")
-        }
       }
     }
 
@@ -77,6 +78,7 @@ export const LoginForm = ({activeLogin, setActiveLogin}) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {error && <div className={styles.error}>Неправильный логин или пароль</div>  }
         <button onClick={(e) => handleLogin(e, {login, password})} className={styles.btn}>
           Войти
         </button>
