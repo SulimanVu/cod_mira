@@ -1,20 +1,16 @@
 .cards {
     display: flex;
-    justify-content: center; // flex-start start center
+    justify-content: flex-end; // flex-start start center
     flex-wrap: wrap;
-    margin: 0 -30px;
-
-    @media(max-width: 1440px) {
-      display: flex;
-      justify-content: center;
-      margin: 0;
-    }
 }
 
 .productTitle {
-  font-weight: 300;
   color: #151b1a;
   line-height: 20px;
-  font-size: 24px;
+  font-size: 32px;
   margin-top: 60px;
+}
+
+.categoryName {
+  font-size: 20px;
 }
