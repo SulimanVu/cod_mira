@@ -9,7 +9,21 @@ const initialState = {
   fermers: [],
   authData: null,
   bascket: [],
+  users: [],
 };
+
+export const fetchAllUsers = createAsyncThunk(
+  "fetch/AllUsers/",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/users`);
+      const data = await res.json();
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
 export const authThunk = createAsyncThunk(
   "fetch/auth",
   async (
@@ -79,18 +93,18 @@ export const fetchAuthUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   "fetch/auth22",
-  async ({name,surname,phone,mail,id}, thunkAPI) => {
+  async ({ name, surname, phone, mail, id }, thunkAPI) => {
     try {
-      const res = await fetch(`${serverUrl}/updateUser/${id}`,{
+      const res = await fetch(`${serverUrl}/updateUser/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name,surname,phone,mail}),
+        body: JSON.stringify({ name, surname, phone, mail }),
       });
       const data = await res.json();
-      thunkAPI.dispatch(fetchAuthUser)
-      
+      thunkAPI.dispatch(fetchAuthUser);
+
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -151,6 +165,9 @@ const applicationSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchAllUsers.fulfilled, (state, action) => {
+        state.users = action.payload;
+      })
       .addCase(authThunk.pending, (state, action) => {
         state.load = true;
       })
