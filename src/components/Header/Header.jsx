@@ -18,43 +18,43 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      <div className="container">
-        <div className={styles.nav_list}>
-          <div className={styles.nav_list_item}>
-            <div className={styles.logo}>
-              <img src={logo} alt="" />
-            </div>
-            <ul className={styles.ul}>
-              <li>Кто мы</li>
-              <li onClick={() => navigate("/fermers")}>Поставщики</li>
-              <li>Доставка</li>
-              <li>О нас</li>
-            </ul>
+      <div className={styles.nav_list}>
+        <div className={styles.nav_list_item}>
+          <div className={styles.logo}>
+            <img src={logo} alt="" />
           </div>
-
-          <div className={styles.btn}>
-            <button
-              onClick={() => setActiveAuth(!activeAuth)}
-              className={styles.btn_item}
-            >
-              <img src={registerIcon} alt="" />
-            </button>
-            <button
-              onClick={() => setActiveLogin(!activeLogin)}
-              className={styles.btn_item}
-            >
-              <img src={lkicon} alt="" />
-            </button>
-            <button className={styles.btn_item}>
-              <img src={basketIcon} alt="" />
-            </button>
-          </div>
+          <ul className={styles.ul}>
+            <li>Кто мы</li>
+            <li onClick={() => navigate("/fermers")}>Поставщики</li>
+            <li>Доставка</li>
+            <li>О нас</li>
+          </ul>
         </div>
-        <LoginModal activeLogin={activeLogin} setActiveLogin={setActiveLogin} />
-        <Portal>
-          <SignUp activeAuth={activeAuth} setActiveAuth={setActiveAuth} />
-        </Portal>
+        <div className={styles.btn}>
+          <button
+            onClick={() => setActiveAuth(!activeAuth)}
+            className={styles.btn_item}
+          >
+            <img src={registerIcon} alt="" />
+          </button>
+          <button
+            onClick={() => setActiveLogin(!activeLogin)}
+            className={styles.btn_item}
+          >
+            <img src={lkicon} alt="" />
+          </button>
+          <button
+            onClick={() => navigate("/bascket")}
+            className={styles.btn_item}
+          >
+            <img src={basketIcon} alt="" />
+          </button>
+        </div>
       </div>
+      <LoginModal activeLogin={activeLogin} setActiveLogin={setActiveLogin} />
+      <Portal>
+        <SignUp activeAuth={activeAuth} setActiveAuth={setActiveAuth} />
+      </Portal>
     </div>
   );
 };
