@@ -7,10 +7,7 @@ const Orders = () => {
         <div className={styles.profile}>
             <ProfileNav/>
             <div className={styles.rightCard}>
-                <select className={styles.filterBookmarks}>
-                    <option value={}></option>
-                </select>
-            {/*    TODO: добавить карточки*/}
+
             </div>
         </div>
     );

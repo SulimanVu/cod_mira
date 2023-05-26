@@ -6,7 +6,9 @@ const CreditCard = () => {
     return (
         <div className={styles.profile}>
             <ProfileNav/>
-            <div className={styles.rightCard}></div>
+            <div className={styles.rightCard}>
+
+            </div>
         </div>
     );
 }
