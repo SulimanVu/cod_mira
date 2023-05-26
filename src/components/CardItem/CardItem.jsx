@@ -1,36 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./cardItem.module.scss";
-import {
-  addProductInBascket,
-  fetchBascket,
-  updateProductInBascket,
-} from "../../features/bascketSlice";
 
 const CardItem = ({ image, description, price, _id }) => {
   const dispatch = useDispatch();
   const [like, setLike] = useState();
 
   const token = localStorage.getItem("token");
-  const bascket = useSelector((state) => state.bascketSlice.bascket);
 
   const handleLike = (e) => {
     e.preventDefault();
     setLike(!like);
-    dispatch(fetchBascket());
-    if (token) {
-      if (bascket.length > 0) {
-        dispatch(updateProductInBascket({ products: _id, price }));
-      } else {
-        dispatch(
-          addProductInBascket({
-            user: localStorage.getItem("id"),
-            products: _id,
-            price,
-          })
-        );
-      }
-    }
   };
 
   return (
