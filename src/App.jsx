@@ -19,7 +19,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/fermers" element={<Fermers />} />
-            <Route path="/bascket/:id" element={<Bascket />} />
+            <Route path="/bascket" element={<Bascket />} />
             <Route path="/about" element={<About />} />
             <Route path="/profile" element={<Profile />}/>
             <Route path="/profile/bookmarks" element={<Bookmarks />} />

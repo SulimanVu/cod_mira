@@ -11,6 +11,7 @@ const CardItem = ({ image, description, price, _id }) => {
   const handleLike = (e) => {
     e.preventDefault();
     setLike(!like);
+    
   };
 
   return (
