@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Fermer.module.scss'
 import cow from './img/brands-welcome__image.svg'
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Fermers = () => {
 
-    // const fermers = useSelector(state => state.applicationSlice.fermers)
+    const [value, setValue] = useState()
+
+    const fermers = useSelector(state => state.applicationSlice.fermers)
 
     return (
         <>
@@ -21,16 +23,19 @@ const Fermers = () => {
             </div>
             <div className={styles.find}>
                 <h1>Поищи поставщика</h1>
-                <input className={styles.finner} />
+                <input value={value} onChange={(e) => { setValue(e.target.value) }} className={styles.finner} />
             </div>
             <div className={styles.ferMain}>
                 <div className={styles.fermers}>
-                    <div className={styles.fermerBlock}>
-                        <div className={styles.fermImg}>
-                            <img className={styles.fermImg} alt='b' src='https://cdn.esh-derevenskoe.ru/image/cache/catalog/product/13123/8954c9-270x270.jpg?v=3' />
-                        </div>
-                        <div className={styles.fermDesc}>Леонид Якубович</div>
-                    </div>
+                    {fermers.map((fermer) => {
+                        return (
+                            <div className={styles.fermerBlock}>
+                                <div className={styles.fermImg}>
+                                    <img className={styles.fermImg} alt='b' src='https://cdn.esh-derevenskoe.ru/image/cache/catalog/product/13123/8954c9-270x270.jpg?v=3' />
+                                </div>
+                                <div className={styles.fermDesc}>{fermer.name}</div>
+                            </div>)
+                    })}
                     <div className={styles.fermerBlock}>
                         <div className={styles.fermImg}>
                             <img className={styles.fermImg} alt='b' src='https://cdn.esh-derevenskoe.ru/image/cache/catalog/product/13123/8954c9-270x270.jpg?v=3' />
