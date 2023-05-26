@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import styles from "./cardItem.module.scss";
 import {
   addProductInBascket,
@@ -19,23 +18,25 @@ const CardItem = ({ image, description, price, _id }) => {
     e.preventDefault();
     setLike(!like);
     dispatch(fetchBascket());
-    if (bascket.length > 0) {
-      dispatch(updateProductInBascket({ products: _id, price }));
-    } else {
-      dispatch(
-        addProductInBascket({
-          user: localStorage.getItem("id"),
-          products: _id,
-          price,
-        })
-      );
+    if (token) {
+      if (bascket.length > 0) {
+        dispatch(updateProductInBascket({ products: _id, price }));
+      } else {
+        dispatch(
+          addProductInBascket({
+            user: localStorage.getItem("id"),
+            products: _id,
+            price,
+          })
+        );
+      }
     }
   };
 
   return (
     <div key={_id} className={`${styles.cardItem} ${like && styles.active}`}>
       <div
-        onClick={token && handleLike}
+        onClick={handleLike}
         className={like ? styles.like : styles.dislike}
       ></div>
       <img src={`${image}`} alt="#" />
