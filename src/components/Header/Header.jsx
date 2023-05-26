@@ -17,7 +17,8 @@ const Header = () => {
   
   return (
   <div className={styles.header} >
-    <div className="container" >
+    <div className="container" > 
+    
     <div className={styles.nav_list}>
   <div className={styles.nav_list_item}>
     <div className={styles.logo}><img src={logo} alt="" /></div>
