@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CardItem from "../CardItem/CardItem";
 import { fetchProd } from "../../features/productSlice";
+import styles from "./cardsMapper.module.scss";
 
 const CardsMapper = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const CardsMapper = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={styles.cardsMapper}>
       {products.map((item) => (
         <CardItem {...item} />
       ))}
