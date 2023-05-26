@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Fermers from "./pages/Fermers/Fermers";
 import Bascket from "./pages/Bascket/Bascket";
-import About from "pages/About/About";
+import About from "./pages/About/About";
 
 import Contacts from "./components/Profile/Contacts";
 import Profile from "./components/Profile/Profile";
@@ -30,7 +30,6 @@ function App() {
             <Route path="/profile/credit" element={<CreditCard />} />
             <Route path="/profile/address" element={<Address />} />
             <Route path="/profile/contacts" element={<Contacts />} />
-
         </Routes>
       <Footer />
     </div>
