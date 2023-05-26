@@ -26,7 +26,6 @@ const Contacts = () => {
                     </div>
                     <button className={styles.profileBtn}>Сохранить</button>
                 </form>
-
             </div>
         </div>
     );
