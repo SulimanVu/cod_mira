@@ -6,7 +6,13 @@ const Bookmarks = () => {
     return (
         <div className={styles.profile}>
             <ProfileNav/>
-            <div className={styles.rightCard}></div>
+            <div className={styles.rightCard}>
+                <select className={styles.filterBookmarks}>
+                    <option value="">filter 1</option>
+                    <option value="">filter 2</option>
+                </select>
+                {/*    TODO: добавить карточки*/}
+            </div>
         </div>
     );
 }
