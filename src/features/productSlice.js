@@ -5,15 +5,18 @@ const initialState = {
   loading: false,
 };
 
-export const fetchProd = createAsyncThunk("prod/fetch", async (_, thunkAPI) => {
-  try {
-    const res = await fetch("http://localhost:3030/product");
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
+export const fetchProd = createAsyncThunk(
+  "product/fetch",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:3030/product");
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 const productSlice = createSlice({
   name: "productSlice",
