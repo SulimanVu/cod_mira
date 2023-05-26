@@ -8,20 +8,23 @@ import { LoginForm } from "components/LoginModal/LoginForm/LoginForm";
 import registerIcon from "icons/auth_sim_icon_180993.png"
 import { LoginModal } from "components/LoginModal";
 import SignUp from "components/SignUp/SignUp";
+import { useNavigate } from "react-router";
 
 const Header = () => {
+  const navigate = useNavigate()
   const [activeAuth,setActiveAuth]= useState(false)
   const [activeLogin,setActiveLogin]= useState(false)
   
   return (
   <div className={styles.header} >
-    <div className="container" >
+    <div className="container" > 
+    
     <div className={styles.nav_list}>
   <div className={styles.nav_list_item}>
     <div className={styles.logo}><img src={logo} alt="" /></div>
       <ul className={styles.ul}>
         <li>Кто мы</li>
-        <li>Поставщики</li>
+        <li onClick={()=> navigate("/fermers")}>Поставщики</li>
         <li>Доставка</li>
         <li>О нас</li>
       </ul>
