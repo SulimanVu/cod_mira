@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import  loginThunk  from "features/applicationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import   {loginThunk}   from "features/applicationSlice";
 import styles from './LoginForm.module.scss'
 
 import { ToastContainer, toast } from "react-toastify";
@@ -13,7 +13,8 @@ export const LoginForm = ({activeLogin, setActiveLogin}) => {
     const dispatch = useDispatch()
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
-    
+    const error = useSelector((state)=> state.application.error)
+    const load = useSelector((state)=> state.application.load)
 
     const Toaster = (text) => {
       toast.error(text,);
@@ -39,6 +40,9 @@ export const LoginForm = ({activeLogin, setActiveLogin}) => {
         dispatch(loginThunk({login, password}))
         setLogin('')
         setPassword('')
+        if(!load && !error){
+            toast.success("Успешно")
+        }
       }
     }
 

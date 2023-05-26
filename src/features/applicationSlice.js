@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {serverUrl} from "../serverUrl"
 
 const initialState = {
   error: null,
@@ -49,6 +50,30 @@ export const fetchFermersThunk = createAsyncThunk(
   }
 );
 
+export const loginThunk = createAsyncThunk(
+  "fetch/login",
+  async ({ login, password }, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ login, password }),
+      });
+      const token = await res.json();
+      if(token.error){
+        return thunkAPI.rejectWithValue(token.error)
+    }
+      localStorage.setItem("token", token.token);
+      localStorage.setItem("id", token.id);
+
+      return token;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
 const applicationSlice = createSlice({
   name: "application",
   initialState,
