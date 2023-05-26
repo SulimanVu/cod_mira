@@ -1,12 +1,13 @@
-import React from 'react';
-import styles from "./main.module.scss"
+import React from "react";
+import styles from "./main.module.scss";
+import SliderList from "../../components/SliderList/SliderList";
 
 const Main = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <div>
+      <SliderList />
+    </div>
+  );
 };
 
 export default Main;
