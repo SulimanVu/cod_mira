@@ -34,6 +34,7 @@ function App() {
             <Route path="/fermers" element={<Fermers />} />
             <Route path="/bascket" element={<Bascket />} />
             <Route path="/about" element={<About />} />
+
             <Route path="/profile" element={<Profile />}/>
             <Route path="/categories" element={<Category />} />
             <Route path="/profile/bookmarks" element={<Bookmarks />} />

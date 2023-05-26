@@ -43,7 +43,6 @@ const dispatch = useDispatch()
                     </div>
                     <button onClick={handleData} className={styles.profileBtn}>Сохранить</button>
                 </form>
-
             </div>
         </div>
     );
