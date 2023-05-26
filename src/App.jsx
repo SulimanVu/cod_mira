@@ -21,6 +21,7 @@ function App() {
             <Route path="/fermers" element={<Fermers />} />
             <Route path="/bascket/:id" element={<Bascket />} />
             <Route path="/about" element={<About />} />
+
             <Route path="/profile" element={<Profile />}/>
             <Route path="/profile/bookmarks" element={<Bookmarks />} />
             <Route path="/profile/orders" element={<Orders />} />
