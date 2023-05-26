@@ -9,11 +9,12 @@ import { ToastContainer, toast } from "react-toastify";
 
 
 export const LoginForm = ({activeLogin, setActiveLogin}) => {
+    console.log(localStorage.getItem('id'))
 
     const dispatch = useDispatch()
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
-    const error = useSelector((state)=> state.application.error)
+    const token = useSelector((state)=> state.application.token)
     const load = useSelector((state)=> state.application.load)
 
     const Toaster = (text) => {
@@ -40,8 +41,10 @@ export const LoginForm = ({activeLogin, setActiveLogin}) => {
         dispatch(loginThunk({login, password}))
         setLogin('')
         setPassword('')
-        if(!load && !error){
+        if(token){
             toast.success("Успешно")
+        }else{
+            toast.error("Ошибка")
         }
       }
     }
