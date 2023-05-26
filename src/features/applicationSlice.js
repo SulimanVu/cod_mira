@@ -1,27 +1,39 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {serverUrl} from "../serverUrl"
+import { serverUrl } from "../serverUrl";
 
 const initialState = {
   error: null,
   load: false,
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
-  fermers:[],
-  authData:null
+  fermers: [],
+  authData: null,
+  bascket: [],
 };
 export const authThunk = createAsyncThunk(
   "fetch/auth",
-  async ({ login, password,name,surname,phone,mail,selectValue }, thunkAPI) => {
+  async (
+    { login, password, name, surname, phone, mail, selectValue },
+    thunkAPI
+  ) => {
     try {
       const res = await fetch(`${serverUrl}/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ login, password,name,surname,phone,mail,role:selectValue }),
+        body: JSON.stringify({
+          login,
+          password,
+          name,
+          surname,
+          phone,
+          mail,
+          role: selectValue,
+        }),
       });
       const token = await res.json();
-      
+
       return token;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -43,7 +55,7 @@ export const fetchFermersThunk = createAsyncThunk(
     try {
       const res = await fetch(`${serverUrl}/oneUser`);
       const data = await res.json();
-      
+
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -57,6 +69,27 @@ export const fetchAuthUser = createAsyncThunk(
     try {
       const res = await fetch(`${serverUrl}/authUser/${id}`);
       const data = await res.json();
+
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  "fetch/auth22",
+  async ({name,surname,phone,mail,id}, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/updateUser/${id}`,{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name,surname,phone,mail}),
+      });
+      const data = await res.json();
+      thunkAPI.dispatch(fetchAuthUser)
       
       return data;
     } catch (e) {
@@ -77,10 +110,10 @@ export const loginThunk = createAsyncThunk(
         body: JSON.stringify({ login, password }),
       });
       const token = await res.json();
-      console.log(token)
-      if(token.error){
-        return thunkAPI.rejectWithValue(token.error)
-    }
+      console.log(token);
+      if (token.error) {
+        return thunkAPI.rejectWithValue(token.error);
+      }
       localStorage.setItem("token", token.token);
       localStorage.setItem("id", token.id);
 
@@ -91,7 +124,26 @@ export const loginThunk = createAsyncThunk(
   }
 );
 
+export const addToBascket = createAsyncThunk(
+  "addToCascket/user",
+  async ({ id, bascket }, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/addProduct/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ bascket }),
+      });
 
+      const data = await res.json();
+
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
 
 const applicationSlice = createSlice({
   name: "application",
@@ -109,13 +161,13 @@ const applicationSlice = createSlice({
         state.load = true;
       })
       .addCase(loginThunk.rejected, (state, action) => {
-        state.error = action.payload
-        state.load = false
+        state.error = action.payload;
+        state.load = false;
       })
-      
+
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.load = false;
-        state.error = null
+        state.error = null;
         state.token = action.payload.token;
         state.id = action.payload.id;
       })
@@ -124,29 +176,36 @@ const applicationSlice = createSlice({
         state.load = true;
       })
       .addCase(fetchFermersThunk.rejected, (state, action) => {
-        state.error = action.payload
-        state.load = false
+        state.error = action.payload;
+        state.load = false;
       })
-      
+
       .addCase(fetchFermersThunk.fulfilled, (state, action) => {
         state.load = false;
-        state.error = null
-       state.fermers = action.payload
+        state.error = null;
+        state.fermers = action.payload;
       })
 
       .addCase(fetchAuthUser.pending, (state, action) => {
         state.load = true;
       })
       .addCase(fetchAuthUser.rejected, (state, action) => {
-        state.error = action.payload
-        state.load = false
+        state.error = action.payload;
+        state.load = false;
       })
-      
+
       .addCase(fetchAuthUser.fulfilled, (state, action) => {
         state.load = false;
-        state.error = null
-       state.authData = action.payload
+        state.error = null;
+        state.authData = action.payload;
+        state.bascket = action.payload.bascket;
       })
+
+      .addCase(addToBascket.fulfilled, (state, action) => {
+        state.load = false;
+        state.error = null;
+        state.bascket = action.payload.bascket;
+      });
   },
 });
 
