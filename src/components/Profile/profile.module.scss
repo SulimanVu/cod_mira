@@ -1,0 +1,70 @@
+.title {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.activeLink {
+  color: #96D0CD;
+}
+
+.profile{
+  display: flex;
+  width: 1200px;
+  margin: auto;
+}
+
+.leftCard {
+  padding: 4% 1%;
+  width: 30%;
+  margin-right: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px black;
+}
+.leftCard>ul {
+  li {
+    a {
+      text-decoration: none;
+      color: black;
+      opacity: 0.5;
+      font-size: 20px;
+    }
+    margin: 20px 0;
+  }
+  list-style: none;
+}
+.rightCard {
+  padding: 5%;
+  width: 70%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px black;
+}
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 20px 0;
+}
+.leftCard>ul>li {
+  position: relative;
+}
+.leftCard>ul>li:nth-child(1):before {
+  //content: url("./img/profile-svgrepo-com.svg");
+
+
+}
+
+.userInfo > span {
+  display: block;
+  opacity: 0.5;
+}
+.userInfo > div {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.profileBtn {
+  background-color: #96D0CD;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+}
