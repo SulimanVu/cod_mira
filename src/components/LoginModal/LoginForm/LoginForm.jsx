@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginThunk } from "features/applicationSlice";
+import  loginThunk  from "features/applicationSlice";
 import styles from './LoginForm.module.scss'
 
 import { ToastContainer, toast } from "react-toastify";
