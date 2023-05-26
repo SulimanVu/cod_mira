@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./main.module.scss";
 import SliderList from "../../components/SliderList/SliderList";
 
-import {ProductPage} from "../../components/Product/ProductPage"
+import { ProductPage } from "../../components/Product/ProductPage";
 
 import cow from "../../icons/cow.svg";
 import koko from "../../icons/koko.svg";
@@ -13,15 +13,14 @@ import { useDispatch } from "react-redux";
 import { fetchCategory } from "features/categorySlice";
 
 const Main = () => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchCategory());
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(fetchCategory())
-    }, [dispatch])
-    
   return (
-    <>
+    <div className={styles.main}>
       <SliderList />
       <div className={styles.infoBlock}>
         <h3>Promise — сервис для предзаказа настоящих фермерских продуктов</h3>
@@ -45,9 +44,9 @@ const Main = () => {
         </div>
         <div className={styles.bg}></div>
       </div>
-      <ProductPage/>
+      <ProductPage />
       <CardsMapper />
-    </>
+    </div>
   );
 };
 
