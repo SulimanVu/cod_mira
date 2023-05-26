@@ -1,6 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { serverUrl } from "../serverUrl";
-
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   error: null,
@@ -28,29 +26,12 @@ export const authThunk = createAsyncThunk(
     }
   }
 );
-export const loginThunk = createAsyncThunk(
-  "fetch/login",
-  async ({ login, password }, thunkAPI) => {
-    try {
-      const res = await fetch(`${serverUrl}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ login, password }),
-      });
-      const token = await res.json();
-      console.log(token)
-      if(token.error){
-        return thunkAPI.rejectWithValue(token.error)
-    }
-      localStorage.setItem("token", token.token);
-      localStorage.setItem("id", token.id);
 
-      return token;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
-    }
+export const authSignUp = createAsyncThunk(
+  "auth/signUp",
+  async ({ name, phone, mail, login, password }, thunkAPI) => {
+    try {
+    } catch (e) {}
   }
 );
 
@@ -67,11 +48,11 @@ export const fetchFermersThunk = createAsyncThunk(
     }
   }
 );
+
 const applicationSlice = createSlice({
   name: "application",
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(authThunk.pending, (state, action) => {
@@ -110,6 +91,5 @@ const applicationSlice = createSlice({
       })
   },
 });
-
 
 export default applicationSlice.reducer;

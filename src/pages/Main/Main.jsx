@@ -1,4 +1,3 @@
-
 import React from "react";
 import styles from "./main.module.scss";
 import SliderList from "../../components/SliderList/SliderList";
@@ -6,6 +5,7 @@ import cow from "../../icons/cow.svg";
 import koko from "../../icons/koko.svg";
 import heart from "../../icons/heart.svg";
 import product from "../../icons/product.svg";
+import CardsMapper from "../../components/CardsMapper/CardsMapper";
 
 const Main = () => {
   return (
@@ -33,6 +33,7 @@ const Main = () => {
         </div>
         <div className={styles.bg}></div>
       </div>
+      <CardsMapper></CardsMapper>
     </>
   );
 };
