@@ -1,0 +1,14 @@
+.slide {
+  min-height: 170px;
+  min-width: 120px;
+  background-size: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.4s;
+  &:hover {
+    box-shadow: 0 0 5px black;
+  }
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
+}
