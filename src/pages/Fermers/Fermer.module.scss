@@ -1,0 +1,70 @@
+.mainBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 600px;
+}
+
+.disc1 {
+    width: 80%;
+    font-size: 32px;
+    text-align: center;
+}
+
+.disc2 {
+    width: 60%;
+    font-size: 25px;
+    text-align: center;
+}
+
+.ferMain {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.fermers {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.fermerBlock {
+    width: 22%;
+    height: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.fermImg {
+    border-radius: 8px;
+}
+
+.fermDesc {
+    font-size: 20px;
+}
+
+.find {
+    margin: 60px auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.finner {
+    border-radius: 8px;
+    border: 0;
+    width: 60%;
+    height: 40px;
+    background-color: rgba(192, 192, 192, 0.699);
+}

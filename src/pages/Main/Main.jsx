@@ -1,13 +1,25 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./main.module.scss";
 import SliderList from "../../components/SliderList/SliderList";
+
+import {ProductPage} from "../../components/Product/ProductPage"
+
 import cow from "../../icons/cow.svg";
 import koko from "../../icons/koko.svg";
 import heart from "../../icons/heart.svg";
 import product from "../../icons/product.svg";
+import CardsMapper from "../../components/CardsMapper/CardsMapper";
+import { useDispatch } from "react-redux";
+import { fetchCategory } from "features/categorySlice";
 
 const Main = () => {
+
+  const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchCategory())
+    }, [dispatch])
+    
   return (
     <>
       <SliderList />
@@ -33,6 +45,8 @@ const Main = () => {
         </div>
         <div className={styles.bg}></div>
       </div>
+      <ProductPage/>
+      <CardsMapper />
     </>
   );
 };

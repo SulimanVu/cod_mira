@@ -1,23 +1,24 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { serverUrl } from "../serverUrl";
-
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {serverUrl} from "../serverUrl"
 
 const initialState = {
   error: null,
   load: false,
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
+  fermers:[],
+  authData:null
 };
 export const authThunk = createAsyncThunk(
   "fetch/auth",
-  async ({ login, password,name,surname,phone,mail }, thunkAPI) => {
+  async ({ login, password,name,surname,phone,mail,selectValue }, thunkAPI) => {
     try {
       const res = await fetch(`${serverUrl}/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ login, password,name,surname,phone,mail }),
+        body: JSON.stringify({ login, password,name,surname,phone,mail,role:selectValue }),
       });
       const token = await res.json();
       
@@ -27,6 +28,43 @@ export const authThunk = createAsyncThunk(
     }
   }
 );
+
+export const authSignUp = createAsyncThunk(
+  "auth/signUp",
+  async ({ name, phone, mail, login, password }, thunkAPI) => {
+    try {
+    } catch (e) {}
+  }
+);
+
+export const fetchFermersThunk = createAsyncThunk(
+  "fetch/fermers",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/oneUser`);
+      const data = await res.json();
+      
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+export const fetchAuthUser = createAsyncThunk(
+  "fetch/auth22",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/authUser/${id}`);
+      const data = await res.json();
+      
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
 export const loginThunk = createAsyncThunk(
   "fetch/login",
   async ({ login, password }, thunkAPI) => {
@@ -52,11 +90,13 @@ export const loginThunk = createAsyncThunk(
     }
   }
 );
+
+
+
 const applicationSlice = createSlice({
   name: "application",
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(authThunk.pending, (state, action) => {
@@ -78,9 +118,36 @@ const applicationSlice = createSlice({
         state.error = null
         state.token = action.payload.token;
         state.id = action.payload.id;
-      });
+      })
+
+      .addCase(fetchFermersThunk.pending, (state, action) => {
+        state.load = true;
+      })
+      .addCase(fetchFermersThunk.rejected, (state, action) => {
+        state.error = action.payload
+        state.load = false
+      })
+      
+      .addCase(fetchFermersThunk.fulfilled, (state, action) => {
+        state.load = false;
+        state.error = null
+       state.fermers = action.payload
+      })
+
+      .addCase(fetchAuthUser.pending, (state, action) => {
+        state.load = true;
+      })
+      .addCase(fetchAuthUser.rejected, (state, action) => {
+        state.error = action.payload
+        state.load = false
+      })
+      
+      .addCase(fetchAuthUser.fulfilled, (state, action) => {
+        state.load = false;
+        state.error = null
+       state.authData = action.payload
+      })
   },
 });
-
 
 export default applicationSlice.reducer;
