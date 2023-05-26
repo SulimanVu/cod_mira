@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import styles from "./header.module.scss";
+import logo from "../../icons/logo.svg"
+import lkicon from "../../icons/user_icon_150670.png"
+import basketIcon from "../../icons/353439-basket-buy-cart-ecommerce-online-purse-shop-shopping_107515.png"
 import logo from "icons/logo.svg"
 import lkicon from "icons/user_icon_150670.png"
 import basketIcon from "icons/353439-basket-buy-cart-ecommerce-online-purse-shop-shopping_107515.png"
