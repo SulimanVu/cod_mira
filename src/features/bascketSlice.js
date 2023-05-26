@@ -22,7 +22,7 @@ export const addProductInBascket = createAsyncThunk(
   "bascket/add",
   async ({ user, products, price }, thunkAPI) => {
     try {
-      const res = await fetch("http://localhost:3030/bascket/:id", {
+      const res = await fetch(`http://localhost:3030/bascket`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -68,9 +68,7 @@ const bascketlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchBascket.fulfilled, (state, action) => {
-        state.bascket = action.payload.filter((item) => {
-          return item === localStorage.getItem("id");
-        });
+        state.bascket = action.payload
       })
       .addCase(updateProductInBascket.fulfilled, (state, action) => {
         state.bascket = action.payload.products;
