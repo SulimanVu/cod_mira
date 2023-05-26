@@ -1,17 +1,29 @@
 import styles from "./profile.module.scss";
 import ProfileNav from "./profileNav";
 import Profile from "./Profile";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAuthUser } from "features/applicationSlice";
 
 const ProfileCard = () => {
-    return (
+    const dispatch = useDispatch()
+    const id = localStorage.getItem('id')
+    console.log(id)
 
+    const authData = useSelector((state)=> state.application?.authData)
+    console.log(authData)
+    useEffect(()=>{
+        dispatch(fetchAuthUser(id))
+
+    },[])
+    return (
         <div className={styles.profile}>
             <ProfileNav/>
             <div className={styles.rightCard}>
                 <div className={styles.title}>Личный кабинет</div>
                 <div className={styles.userInfo}>
                     <span>Фамилия Имя:</span>
-                    <div>Иван Трошев</div>
+                    <div>{authData?.name}</div>
                 </div>
                 <div className={styles.userInfo}>
                     <span>Сумма заказов:</span>
