@@ -6,7 +6,7 @@ const initialState = {
 }
 
 export const fetchProd = createAsyncThunk(
-    'films/fetch',
+    'product/fetch',
     async (_, thunkAPI) => {
         try {
             const res = await fetch('http://localhost:3030/product');
@@ -23,7 +23,7 @@ const productSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProd.fullfilled, (state, action) => {
+            .addCase(fetchProd.fulfilled, (state, action) => {
                 state.loading = false;
                 state.products = action.payload;
             })
