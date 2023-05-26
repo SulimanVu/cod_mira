@@ -52,4 +52,18 @@
   .price {
     margin-top: 20px;
   }
+  button {
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 20px auto 0;
+    width: 70%;
+    transition: 0.4s;
+    align-self: flex-end;
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
 }

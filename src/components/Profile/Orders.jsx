@@ -6,12 +6,6 @@ const Orders = () => {
     return (
         <div className={styles.profile}>
             <ProfileNav/>
-            <div className={styles.rightCard}>
-                <select className={styles.filterBookmarks}>
-                    <option ></option>
-                </select>
-            {/*    TODO: добавить карточки*/}
-            </div>
         </div>
     );
 }
