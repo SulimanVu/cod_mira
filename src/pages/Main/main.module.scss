@@ -1,0 +1,28 @@
+.infoBlock {
+  width: 80%;
+  margin: auto;
+  h3 {
+    font-size: 26px;
+  }
+  .blocks {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+    div {
+      padding: 12px;
+      border-radius: 8px;
+      background-color: rgb(240, 239, 239);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 22%;
+    }
+  }
+  .bg {
+    background-image: url("../../icons/bg-2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 240px;
+    border-radius: 10px;
+  }
+}

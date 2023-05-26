@@ -39,6 +39,7 @@ export const loginThunk = createAsyncThunk(
         body: JSON.stringify({ login, password }),
       });
       const token = await res.json();
+      console.log(token)
       if(token.error){
         return thunkAPI.rejectWithValue(token.error)
     }

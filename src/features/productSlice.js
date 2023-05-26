@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
     products: [],
@@ -23,7 +23,7 @@ const productSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProd.fullfilled, (state, action) => {
+            .addCase(fetchProd.fulfilled, (state, action) => {
                 state.loading = false;
                 state.products = action.payload;
             })
