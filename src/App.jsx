@@ -12,8 +12,20 @@ import Bookmarks from "./components/Profile/Bookmarks";
 import Orders from "./components/Profile/Orders";
 import Address from "./components/Profile/Address";
 import CreditCard from "./components/Profile/CreditCard";
+import { useDispatch } from "react-redux";
+import { fetchAuthUser } from "features/applicationSlice";
+import { useEffect } from "react";
+
 
 function App() {
+  const dispatch = useDispatch()
+  const id = localStorage.getItem('id')
+  useEffect(()=>{
+    if(id){
+      dispatch(fetchAuthUser(id))
+    }
+
+  },[id])
   return (
     <div className="App">
         <Header />
