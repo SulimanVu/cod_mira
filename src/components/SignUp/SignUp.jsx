@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { authThunk } from "../../features/applicationSlice";
+import  {authThunk}  from "../../features/applicationSlice";
 import styles from "./SignUp.module.scss";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -11,7 +11,8 @@ const SignUp = ({ activeAuth, setActiveAuth }) => {
 
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-
+  const [selectValue,setSelectValue] = useState("Фермер")
+  console.log(selectValue)
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [phone, setPhone] = useState("");
@@ -70,7 +71,7 @@ const SignUp = ({ activeAuth, setActiveAuth }) => {
     e.preventDefault();
 
     if (handleValidation({ login, password, name, surname, phone, mail })) {
-      dispatch(authThunk({ login, password, name, surname, phone, mail }));
+      dispatch(authThunk({ login, password, name, surname, phone, mail,selectValue }));
       setName("");
       setSurname("");
       setPhone("");
@@ -127,6 +128,11 @@ const SignUp = ({ activeAuth, setActiveAuth }) => {
                 value={mail}
                 onChange={(e) => setMail(e.target.value)}
               />
+              <label>Вы:</label>
+              <select value={selectValue} onChange={(e)=> setSelectValue(e.target.value)} className={styles.select}>
+                <option value={"Фермер"}>Фермер</option>
+                <option value={"Клиент"}>Клиент</option>
+              </select>
 
               <button
                 className={styles.btnAfter}
@@ -166,6 +172,7 @@ const SignUp = ({ activeAuth, setActiveAuth }) => {
                     surname,
                     phone,
                     mail,
+                    selectValue
                   })
                 }
                 className={styles.btn}
