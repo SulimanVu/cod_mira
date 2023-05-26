@@ -17,6 +17,7 @@ const ProfileNav = () => {
                 <hr/>
                 <li><a href="">Exit</a></li>
             </ul>
+
         </div>
     );
 }
