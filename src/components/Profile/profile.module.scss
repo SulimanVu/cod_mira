@@ -1,6 +1,7 @@
 .title {
   font-size: 25px;
   font-weight: 600;
+  margin-bottom: 15px;
 }
 
 .activeLink {
@@ -10,7 +11,8 @@
 .profile{
   display: flex;
   width: 1200px;
-  margin: auto;
+  margin: 50px auto;
+
 }
 
 .leftCard {
@@ -18,7 +20,7 @@
   width: 30%;
   margin-right: 20px;
   border-radius: 10px;
-  box-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 12px gray;
 }
 .leftCard>ul {
   li {
@@ -36,7 +38,15 @@
   padding: 5%;
   width: 70%;
   border-radius: 10px;
-  box-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 12px gray;
+}
+.userInfo > span {
+  display: block;
+  opacity: 0.5;
+}
+.userInfo > div {
+  font-size: 18px;
+  font-weight: 500;
 }
 .userInfo {
   display: flex;
@@ -47,19 +57,42 @@
 .leftCard>ul>li {
   position: relative;
 }
-.leftCard>ul>li:nth-child(1):before {
-  //content: url("./img/profile-svgrepo-com.svg");
-
-
+@mixin nav-list-ico {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -32px;
+  opacity: 0.7;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.userInfo > span {
-  display: block;
-  opacity: 0.5;
+.leftCard>ul>li:nth-child(1)::before {
+  @include nav-list-ico;
+  background-image: url("./icons/profile-svgrepo-com.svg");
+
 }
-.userInfo > div {
-  font-size: 18px;
-  font-weight: 500;
+.leftCard>ul>li:nth-child(2)::before {
+  @include nav-list-ico;
+  background-image: url("./icons/love-svgrepo-com.svg");
+}
+.leftCard>ul>li:nth-child(3)::before {
+  @include nav-list-ico;
+  background-image: url("./icons/orders-svgrepo-com.svg");
+}
+.leftCard>ul>li:nth-child(4)::before {
+  @include nav-list-ico;
+  background-image: url("./icons/credit-card-svgrepo-com.svg");
+}
+.leftCard>ul>li:nth-child(5)::before {
+  @include nav-list-ico;
+  background-image: url("./icons/map-marker-svgrepo-com.svg");
+}
+.leftCard>ul>li:nth-child(6)::before {
+  @include nav-list-ico;
+  background-image: url("./icons/contact-card-svgrepo-com.svg");
 }
 
 .profileBtn {
@@ -67,4 +100,35 @@
   padding: 10px 20px;
   border-radius: 10px;
   border: none;
+}
+
+.contactFrom {
+
+}
+.formRow {
+  display: flex;
+  justify-content: space-between;
+  max-width: 80%;
+  margin: 20px 0;
+}
+.formRow > label {
+  width: 30%;
+  color: black;
+}
+.formRow > input {
+  padding: 5px 0;
+  border-radius: 5px;
+  border: 1px gray solid;
+  flex-grow: 1;
+  //max-width: 50%;
+}
+
+.filterBookmarks {
+  padding: 1% 6%;
+  background-color: #96d0cd;
+  border: 1px gray solid;
+  border-radius: 10px;
+}
+.filterBookmarks > option:hover {
+  border-radius: 10px;
 }

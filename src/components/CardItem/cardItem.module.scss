@@ -7,6 +7,7 @@
   background-color: #ebeaea;
   position: relative;
   img {
+    height: 300px;
     object-fit: cover;
   }
   .like {
@@ -38,6 +39,17 @@
   opacity: 0.7;
 }
 
-.info{
-    
+.info {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 30px 10px;
+  .description {
+    font-size: 23px;
+  }
+  .fermer {
+    color: #a8a8a8;
+  }
+  .price {
+    margin-top: 20px;
+  }
 }
