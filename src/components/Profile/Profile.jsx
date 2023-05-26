@@ -4,7 +4,6 @@ import Profile from "./Profile";
 
 const ProfileCard = () => {
     return (
-
         <div className={styles.profile}>
             <ProfileNav/>
             <div className={styles.rightCard}>
