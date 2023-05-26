@@ -69,9 +69,7 @@ const bascketlice = createSlice({
     builder
       .addCase(fetchBascket.fulfilled, (state, action) => {
         state.bascket = action.payload.filter((item) => {
-          if (item.user._id === localStorage.getItem("id")) {
-            return item;
-          }
+          return item === localStorage.getItem("id");
         });
       })
       .addCase(updateProductInBascket.fulfilled, (state, action) => {
