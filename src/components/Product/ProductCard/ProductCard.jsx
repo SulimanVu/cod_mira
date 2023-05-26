@@ -9,7 +9,7 @@ export const ProductCard = ({img, title}) => {
     return (
         <div className={styles.container}>
             <img className={styles.img} src={img} alt="" />
-            <h2 className={styles.title}>sasg</h2>
+            <h2 className={styles.title}>{title}</h2>
         </div>
     );
 };
