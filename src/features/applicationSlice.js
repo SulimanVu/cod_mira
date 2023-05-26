@@ -7,6 +7,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
   fermers:[],
+  authData:null
 };
 export const authThunk = createAsyncThunk(
   "fetch/auth",
@@ -41,6 +42,20 @@ export const fetchFermersThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await fetch(`${serverUrl}/oneUser`);
+      const data = await res.json();
+      
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+export const fetchAuthUser = createAsyncThunk(
+  "fetch/auth22",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/authUser/${id}`);
       const data = await res.json();
       
       return data;
@@ -117,6 +132,20 @@ const applicationSlice = createSlice({
         state.load = false;
         state.error = null
        state.fermers = action.payload
+      })
+
+      .addCase(fetchAuthUser.pending, (state, action) => {
+        state.load = true;
+      })
+      .addCase(fetchAuthUser.rejected, (state, action) => {
+        state.error = action.payload
+        state.load = false
+      })
+      
+      .addCase(fetchAuthUser.fulfilled, (state, action) => {
+        state.load = false;
+        state.error = null
+       state.authData = action.payload
       })
   },
 });

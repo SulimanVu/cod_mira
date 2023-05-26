@@ -4,7 +4,9 @@ import logo from "../../icons/logo.svg";
 import lkicon from "../../icons/user_icon_150670.png";
 import basketIcon from "../../icons/353439-basket-buy-cart-ecommerce-online-purse-shop-shopping_107515.png";
 import { Portal } from "components/Modal/Portal/Portal";
-import registerIcon from "icons/auth_sim_icon_180993.png";
+
+import registerIcon from "icons/auth_sim_icon_180993.png"
+
 import { LoginModal } from "components/LoginModal";
 import SignUp from "components/SignUp/SignUp";
 import { useNavigate } from "react-router";

@@ -8,7 +8,7 @@ const Orders = () => {
             <ProfileNav/>
             <div className={styles.rightCard}>
                 <select className={styles.filterBookmarks}>
-                    <option value={}></option>
+                    <option ></option>
                 </select>
             {/*    TODO: добавить карточки*/}
             </div>
