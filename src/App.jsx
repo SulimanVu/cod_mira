@@ -3,7 +3,7 @@ import Main from "./pages/Main/Main";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Bascket from "./pages/Bascket/Bascket";
-import About from "pages/About/About";
+import About from "./pages/About/About";
 
 function App() {
   return (
