@@ -18,12 +18,7 @@ const SliderList = () => {
       <Slide />
       <Slide />
       <Slide />
-      <Slide />
-      <Slide />
-      <Slide />
-      <Slide />
-      <Slide />
-      <Slide />
+
     </div>
   );
 };
