@@ -21,6 +21,7 @@ const CardItem = ({ image, description, price, _id }) => {
     if (bascket.length > 0) {
       dispatch(updateProductInBascket({ products: _id, price }));
     } else {
+      
       dispatch(
         addProductInBascket({
           user: localStorage.getItem("id"),
