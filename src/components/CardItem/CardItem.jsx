@@ -1,22 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./cardItem.module.scss";
 import { addToBascket } from "features/applicationSlice";
-import { useLocation } from "react-router";
+import { fetchFermersThunk } from "features/applicationSlice";
 
-const CardItem = ({ image, description, price, _id }) => {
+const CardItem = ({ image, description, price, fermer, _id }) => {
   const dispatch = useDispatch();
   const [like, setLike] = useState();
 
-  const path = useLocation()
   const token = localStorage.getItem("token");
   const id = localStorage.getItem("id");
 
+  const currentFermer = useSelector((state) =>
+    state.application.fermers.find((item) => item._id == fermer)
+  );
+
+  console.log(currentFermer);
   const handleLike = (e) => {
     e.preventDefault();
     setLike(!like);
   };
 
+  useEffect(() => {
+    dispatch(fetchFermersThunk());
+  }, [dispatch]);
   return (
     <div key={_id} className={`${styles.cardItem} ${like && styles.active}`}>
       <div
@@ -25,10 +32,19 @@ const CardItem = ({ image, description, price, _id }) => {
       ></div>
       <img src={`${image}`} alt="#" />
       <div className={styles.info}>
-        <span className={styles.description}>{description}</span>
-        <span className={styles.fermer}>От Дмитрия Вадуева</span>
-        <span className={styles.price}> Цена: {price} ₽</span>
-        <button onClick={() => dispatch(addToBascket({ id, bascket: _id }))}>
+        <div className={styles.spanBlock}>
+          <span className={styles.description}>
+            {description.length > 26
+              ? description.slice(0, 25) + "..."
+              : description}
+          </span>
+          <span className={styles.fermer}>{currentFermer?.name}</span>
+          <span className={styles.price}> Цена: {price} ₽</span>
+        </div>
+        <button
+          disabled={!token && true}
+          onClick={() => dispatch(addToBascket({ id, bascket: _id }))}
+        >
           В корзину
         </button>
       </div>
