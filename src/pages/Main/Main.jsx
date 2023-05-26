@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "./main.module.scss";
 import SliderList from "../../components/SliderList/SliderList";
+
+import {ProductPage} from "../../components/Product/ProductPage"
+
 import cow from "../../icons/cow.svg";
 import koko from "../../icons/koko.svg";
 import heart from "../../icons/heart.svg";
@@ -31,6 +34,7 @@ const Main = () => {
           </div>
         </div>
         <div className={styles.bg}></div>
+        <ProductPage/>
       </div>
     </>
   );
