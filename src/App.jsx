@@ -9,7 +9,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
-
       </Routes>
       <Footer />
     </div>
