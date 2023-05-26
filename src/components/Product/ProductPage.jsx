@@ -4,7 +4,6 @@ import styles from "./ProductPage.module.scss"
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategory } from 'features/categorySlice';
 
-
 const FEATURES = [
     { "img": "https://krasunia.ru/wp-content/uploads/0/c/9/0c94bc88525db1c7659f3ca09a7abf15.jpeg", "title": "Новый урожай" },
     { "img": "https://krasunia.ru/wp-content/uploads/0/c/9/0c94bc88525db1c7659f3ca09a7abf15.jpeg", "title": "Шашлыки" },
@@ -13,7 +12,6 @@ const FEATURES = [
     { "img": "https://krasunia.ru/wp-content/uploads/0/c/9/0c94bc88525db1c7659f3ca09a7abf15.jpeg", "title": "Ешь уникальное" },
     { "img": "https://krasunia.ru/wp-content/uploads/0/c/9/0c94bc88525db1c7659f3ca09a7abf15.jpeg", "title": "Сыры" },
 ]
-
 
 export const ProductPage = () => {
     const categories = useSelector((state) => state.categorySlice.categories)
