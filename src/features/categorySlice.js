@@ -1,12 +1,12 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     categories: [],
     loading: false,
 }
 
-export const fetchCats = createAsyncThunk(
-    'categories/fetch',
+export const fetchCategory = createAsyncThunk(
+    'category/fetch',
     async (_, thunkAPI) => {
         try {
             const res = await fetch('http://localhost:3030/category');
@@ -23,12 +23,9 @@ const categorySlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProd.fullfilled, (state, action) => {
+            .addCase(fetchCategory.fulfilled, (state, action) => {
                 state.loading = false;
-                state.products = action.payload;
-            })
-            .addCase(fetchProd.pending, (state, action) => {
-                state.loading = true;
+                state.categories = action.payload;
             })
     }
 });
