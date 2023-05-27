@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,aAAa,CAAC;EACZ,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,GAAG,EAAE,IAAI;EACT,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAI;CACb;;AACD,AAAA,KAAK,CAAA;EACH,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;CACpB",
-    "sources": [
-        "bascket.module.scss"
-    ],
-    "names": [],
-    "file": "bascket.module.css"
-}

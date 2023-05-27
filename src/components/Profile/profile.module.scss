@@ -102,9 +102,6 @@
   border: none;
 }
 
-.contactFrom {
-
-}
 .formRow {
   display: flex;
   justify-content: space-between;
@@ -131,4 +128,26 @@
 }
 .filterBookmarks > option:hover {
   border-radius: 10px;
+}
+
+.profInp {
+  height: 200px;
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.profInp input {
+  border-radius: 6px;
+}
+
+.profInp input::placeholder {
+  text-align: center;
+}
+
+.profInp button {
+  background-color: #96D0CD;
+  padding: 7px 9px;
+  border-radius: 8px;
 }
