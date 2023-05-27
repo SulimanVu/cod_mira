@@ -7,9 +7,11 @@ import Map from "../../components/Map/Map";
 
 import { ToastContainer, toast } from "react-toastify";
 import { fetchAllUsers } from "features/applicationSlice";
+import CardsMapper from "components/CardsMapper/CardsMapper";
 
 const RequestForm = ({ setAlert }) => {
   const dispatch = useDispatch();
+  const likedCards = useSelector((state) => state.request.likedProd);
   const route = useSelector((state) => state.request.mapRoute);
   const theUser = useSelector((state) =>
     state.application.users.find(
@@ -82,6 +84,7 @@ const RequestForm = ({ setAlert }) => {
         from,
         to,
         km,
+        product: likedCards.join(",", " ").toString(),
       })
     );
   };
@@ -155,6 +158,14 @@ const RequestForm = ({ setAlert }) => {
             {/* Final  form i.e step 3 */}
             {step === 3 && (
               <div className="form-stepper__step3">
+                <h2>Выберите товар</h2>
+                <div className="form-products">
+                  <CardsMapper />
+                </div>
+              </div>
+            )}
+            {step === 4 && (
+              <div className="form-stepper__step3">
                 <h2>Подтверждение заявки</h2>
               </div>
             )}
@@ -169,14 +180,14 @@ const RequestForm = ({ setAlert }) => {
               </button>
             )}
 
-            {step < 3 ? (
+            {step < 4 ? (
               <button
                 className="btn btn-primary"
                 onClick={() => onStepChange()}
               >
                 Далее
               </button>
-            ) : step === 3 ? (
+            ) : step === 4 ? (
               <button
                 className="btn btn-primary sign"
                 onClick={() => handleAddRequest()}
