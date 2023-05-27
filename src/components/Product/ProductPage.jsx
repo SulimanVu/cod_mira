@@ -7,9 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 export const ProductPage = () => {
-    const currentFermer = useSelector((state) =>
-    state.categorySlice.categories.find((item) => console.log(item._id)));
-
+    const currentFermer = useSelector((state) => state.categorySlice.categories.find((item) => console.log(item._id)));
     let categories = useSelector((state) => state.categorySlice.categories)
 
     if(categories.length >= 3) categories = categories.slice(0, 2)
@@ -29,7 +27,9 @@ export const ProductPage = () => {
                     </>
                 )}
             </div>
-            <Link to="/categories"><p style={{cursor: 'pointer'}}>перейти к каталогу товаров</p></Link>
+            <Link to={"/categories/" + categories[0]?._id}>
+                <p className={styles.pLink}>перейти к каталогу товаров</p>
+            </Link>
         </div>
     );
 };
