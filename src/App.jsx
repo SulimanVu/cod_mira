@@ -37,7 +37,7 @@ function App() {
         <Route path="/bascket" element={<Bascket />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/categories" element={<Category />} />
+        <Route path="/categories/:id" element={<Category />} />
         <Route path="/profile/bookmarks" element={<Bookmarks />} />
         <Route path="/profile/orders" element={<Orders />} />
         <Route path="/profile/credit" element={<CreditCard />} />

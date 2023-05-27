@@ -7,9 +7,9 @@ const initialState = {
 
 export const fetchCategory = createAsyncThunk(
     'category/fetch',
-    async (_, thunkAPI) => {
+    async (id = '', thunkAPI) => {
         try {
-            const res = await fetch('http://localhost:3030/category');
+            const res = await fetch(`http://localhost:3030/category/${id}`);
             const data = await res.json();
             return data;
         } catch (error) {
