@@ -19,7 +19,6 @@ const Header = () => {
   const authData = useSelector((state)=> state.application.authData)
 
 
-
   return (
     <div className={styles.header}>
       <div className={styles.nav_list}>
@@ -45,12 +44,12 @@ const Header = () => {
             className={styles.btn_item}>
             <img src={registerIcon} alt="" />
           </button>
-          <button
-            onClick={() => setActiveLogin(!activeLogin)}
-            className={styles.btn_item}
-          >
-            <img src={lkicon} alt="" />
-          </button>
+              <button
+                  onClick={() => setActiveLogin(!activeLogin)}
+                  className={styles.btn_item}
+              >
+                <img src={lkicon} alt="" />
+              </button>
           <button
             onClick={() => navigate("/bascket")}
             className={styles.btn_item}
