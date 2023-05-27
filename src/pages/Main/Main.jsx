@@ -11,6 +11,7 @@ import product from "../../icons/product.svg";
 import CardsMapper from "../../components/CardsMapper/CardsMapper";
 import { useDispatch } from "react-redux";
 import { fetchCategory } from "features/categorySlice";
+import ModalProduct from "components/ModalProduct/ModalProduct";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ const Main = () => {
         </div>
         <div className={styles.bg}></div>
       </div>
+      {/* <ModalProduct/> */}
       <ProductPage />
       <CardsMapper />
     </div>

@@ -13,10 +13,6 @@ const Category = () => {
     const currentProducts = useSelector((state) =>
     state.categorySlice.categories.find((item) => item._id == id));
     
-    // const [click, setClick] = useState('')
-
-    console.log(currentProducts.products);
-
     useEffect(() => {
         dispatch(fetchCategory())
     }, [dispatch, ])
@@ -31,8 +27,6 @@ const Category = () => {
                         <Link className={styles.link} to={"/categories/" + obj._id}>
                             <div 
                                 key={i}
-                                // onClick={() => setClick(i)}
-                                // className={click === key ? styles.selectItem + ` ` + styles.backColor : styles.selectItem}
                                 className={styles.selectItem}
                             >{obj.name}</div>
                         </Link>

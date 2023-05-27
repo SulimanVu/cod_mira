@@ -28,7 +28,10 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
   useEffect(() => {
     dispatch(fetchFermersThunk());
   }, [dispatch]);
+
+
   return (
+
     <div key={_id} className={`${styles.cardItem} ${like && styles.active}`}>
       <div
         onClick={handleLike}
@@ -48,6 +51,7 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
             </Link>
           </span>
           <span className={styles.price}> Цена: {price} ₽</span>
+
         </div>
         { path?.pathname === "/bascket" ? null
         :( 
@@ -60,6 +64,7 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
 
   )
         }
+
       </div>
     </div>
   );
