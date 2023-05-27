@@ -11,6 +11,7 @@ import { LoginModal } from "components/LoginModal";
 import SignUp from "components/SignUp/SignUp";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import {Link} from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -24,7 +25,9 @@ const Header = () => {
       <div className={styles.nav_list}>
         <div className={styles.nav_list_item}>
           <div className={styles.logo}>
-            <img src={logo} alt="" />
+            <Link to="/">
+              <img src={logo} alt="" />
+            </Link>
           </div>
           <ul className={styles.ul}>
             <li>Кто мы</li>
