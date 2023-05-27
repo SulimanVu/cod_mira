@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Main from "./pages/Main/Main";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -15,14 +15,17 @@ import CreditCard from "./components/Profile/CreditCard";
 import { useDispatch } from "react-redux";
 import { fetchAuthUser } from "features/applicationSlice";
 import { useEffect, useState } from "react";
-import RequestForm from "pages/requestForm/RequestForm";
-import styles from "./index.scss";
-import FermerPage from "pages/FermerPage/FermerPage";
-import { ModalProduct } from "components/ModalProduct/ModalProduct";
+import RequestForm from "./pages/requestForm/RequestForm";
+import FermerPage from "./pages/FermerPage/FermerPage";
+import PaymentOptions from "./components/Payment/Payment";
+import AddProd from "./components/Profile/AddProd";
+import Request from "./components/Request/Request";
+
 
 function App() {
   const dispatch = useDispatch();
   const id = localStorage.getItem("id");
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -44,9 +47,11 @@ function App() {
         <Route path="/profile/credit" element={<CreditCard />} />
         <Route path="/profile/address" element={<Address />} />
         <Route path="/profile/contacts" element={<Contacts />} />
+        <Route path="/profile/addProd" element={<AddProd />} />
         <Route path="/fermer/:id" element={<FermerPage />} />
-
-        <Route path="/modal" element={<ModalProduct />} />
+        <Route path="/pay" element={<PaymentOptions />} />
+        <Route path="/delivery" element={<RequestForm setAlert={setAlert} />} />
+        <Route path="/request" element={<Request />} />
       </Routes>
       <Footer />
     </div>

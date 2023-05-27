@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   request: [],
   mapRoute: [],
+  likedProd: [],
 };
 
 export const fetchRequest = createAsyncThunk(
@@ -20,7 +21,10 @@ export const fetchRequest = createAsyncThunk(
 
 export const addRequest = createAsyncThunk(
   "add/request",
-  async ({ user, from, to, latLngFrom, latLngTo, km, kg, price }, thunkAPI) => {
+  async (
+    { user, from, to, latLngFrom, latLngTo, km, kg, price, product },
+    thunkAPI
+  ) => {
     try {
       const res = await fetch("http://localhost:3030/request", {
         method: "POST",
@@ -37,6 +41,8 @@ export const addRequest = createAsyncThunk(
           km,
           kg,
           price,
+          product,
+          fermer: "6470e3cd64c8962de7cf327f",
         }),
       });
       const data = await res.json();
@@ -80,6 +86,9 @@ const requestSlice = createSlice({
     saveRoute: (state, action) => {
       state.mapRoute = action.payload;
     },
+    likeProd: (state, action) => {
+      state.likedProd.push(action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -122,6 +131,6 @@ const requestSlice = createSlice({
   },
 });
 
-export const { saveRoute } = requestSlice.actions;
+export const { saveRoute, likeProd } = requestSlice.actions;
 
 export default requestSlice.reducer;

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./cardItem.module.scss";
-import { addToBascket } from "features/applicationSlice";
-import { fetchFermersThunk } from "features/applicationSlice";
+import { addToBascket, fetchFermersThunk } from "features/applicationSlice";
 import { Link } from "react-router-dom";
+import { likeProd } from "features/requestSlice";
 
 const CardItem = ({ image, description, price, fermer, _id }) => {
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
   const handleLike = (e) => {
     e.preventDefault();
     setLike(!like);
+    dispatch(likeProd(_id));
   };
 
   useEffect(() => {
@@ -27,36 +28,30 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
 
 
   return (
-    <>
-      <div key={_id} className={`${styles.cardItem} ${like && styles.active}`}>
-        <div
-          onClick={handleLike}
-          className={like ? styles.like : styles.dislike}
-        ></div>
-        <img src={`${image}`} alt="#" />
-        <div className={styles.info}>
-          <div className={styles.spanBlock}>
-            <span className={styles.description}>
-              {description?.length > 26
-                ? description.slice(0, 25) + "..."
-                : description}
-            </span>
-            <span className={styles.fermer}>
-              <Link to={`/fermer/${currentFermer?._id}`}>
-                {currentFermer?.name}
-              </Link>
-            </span>
-            <span className={styles.price}> Цена: {price} ₽</span>
-          </div>
-          <button
-            disabled={!token && true}
-            onClick={() => dispatch(addToBascket({ id, bascket: _id }))}
-          >
-            В корзину
-          </button>
+
+    <div key={_id} className={`${styles.cardItem} ${like && styles.active}`}>
+      <div
+        onClick={handleLike}
+        className={like ? styles.like : styles.dislike}
+      ></div>
+      <img src={`${image}`} alt="#" />
+      <div className={styles.info}>
+        <div className={styles.spanBlock}>
+          <span className={styles.description}>
+            {description && description.length > 26
+              ? description.slice(0, 25) + "..."
+              : description}
+          </span>
+          <span className={styles.fermer}>
+            <Link to={`/fermer/${currentFermer?._id}`}>
+              {currentFermer?.name}
+            </Link>
+          </span>
+          <span className={styles.price}> Цена: {price} ₽</span>
+
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

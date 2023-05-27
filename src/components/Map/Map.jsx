@@ -4,9 +4,7 @@ import { useEffect } from "react";
 import L from "leaflet";
 import RoutineMachine from "./RoutineMachine";
 
-
 function Map() {
-
   // TODO МОЖНО ДОБАВИТЬ handleAlert чтобы оповещать что данные сохранены useState
   useEffect(() => {
     delete L.Icon.Default.prototype._getIconUrl;
@@ -16,18 +14,16 @@ function Map() {
       shadowUrl: require("../../public/marker-shadow.png"),
     });
   }, []);
-  
 
-  
   const center = [53.5, 38.5];
 
   return (
     <>
       <MapContainer
         center={center}
-        zoom={4.1}
+        zoom={3.5}
         scrollWheelZoom={false}
-        style={{ height: "50vh", width: "90%", padding: 0, margin: ' 0 auto'}}
+        style={{ height: "300px", width: "90%", padding: 0, margin: " 0 auto" }}
       >
         <TileLayer
           url="https://{s}.tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token={accessToken}"
