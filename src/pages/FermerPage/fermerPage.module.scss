@@ -1,0 +1,36 @@
+.fermerPage {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  .mainImg {
+    width: 40%;
+    object-fit: cover;
+    box-shadow: 2px 2px 5px silver;
+    margin-right: 30px;
+  }
+  .contacts {
+    display: flex;
+    div {
+      display: flex;
+      align-items: center;
+      background-color: aliceblue;
+      padding: 10px 16px;
+      img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+      &:first-child {
+        margin-right: 20px;
+      }
+    }
+  }
+  button {
+    margin-top: 10px;
+    background-color: #fff;
+    transition: 0.4s;
+    &:hover {
+      color: blue;
+    }
+  }
+}

@@ -17,11 +17,11 @@ import { fetchAuthUser } from "features/applicationSlice";
 import { useEffect, useState } from "react";
 import RequestForm from "pages/requestForm/RequestForm";
 import styles from "./index.scss";
+import FermerPage from "pages/FermerPage/FermerPage";
 
 function App() {
   const dispatch = useDispatch();
   const id = localStorage.getItem("id");
-  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -31,9 +31,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className={alert ? styles.alert : styles.alertoff}>
-        <p>1</p>
-      </div>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/fermers" element={<Fermers />} />
@@ -46,10 +43,7 @@ function App() {
         <Route path="/profile/credit" element={<CreditCard />} />
         <Route path="/profile/address" element={<Address />} />
         <Route path="/profile/contacts" element={<Contacts />} />
-        <Route
-          path="/addRequest"
-          element={<RequestForm setAlert={setAlert} />}
-        />
+        <Route path="/fermer/:id" element={<FermerPage />} />
       </Routes>
       <Footer />
     </div>

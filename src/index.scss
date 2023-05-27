@@ -10,27 +10,3 @@ body {
   width: 80%;
   margin: auto;
 }
-
-.alert {
-  position: absolute;
-  line-height: 0;
-  margin: 0;
-  font-weight: 100;
-  padding: 0.1px;
-  top: 90px;
-  left: -10px;
-  border: 0.5px solid #fff;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  color: white;
-  text-align: center;
-  background-color: rgb(181, 9, 9);
-  box-shadow: none;
-  transition: 0.4s;
-}
-
-.alertoff {
-  transition: 0.4s;
-  display: none;
-}
