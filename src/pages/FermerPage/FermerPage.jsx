@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import styles from "./fermerPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFermersThunk, following } from "features/applicationSlice";
+import { fetchFermersThunk, following, userActions } from "features/applicationSlice";
 import { useParams } from "react-router-dom";
+import Rating from "components/Raiting/Raiting"
 
 const FermerPage = () => {
+  const visible= useSelector((state)=> state.application.isVisible)
   const { id } = useParams();
+
   const myId = localStorage.getItem("id");
   const fermer = useSelector((state) =>
     state.application.fermers.find((item) => item._id === id)
@@ -22,9 +25,13 @@ const FermerPage = () => {
 
   useEffect(() => {
     dispatch(fetchFermersThunk());
-  }, [dispatch, fermer]);
+  }, [dispatch]);
+  const handleRated = () => {
+    dispatch(userActions.showRating());
+  };
 
   return (
+    <>
     <div className={styles.fermerPage}>
       <img
         className={styles.mainImg}
@@ -50,7 +57,33 @@ const FermerPage = () => {
         </div>
         <button onClick={handleFollowing}>Подписаться на фермера</button>
       </div>
+     
+      
     </div>
+    <div className={styles.btn}>
+                                    <div
+                                        className={
+                                        fermer?.rating === 0
+                                            ? "rating0"
+                                            : fermer?.rating <= 3
+                                            ? "rating1-3"
+                                            : fermer?.rating <= 6
+                                            ? "rating3-6"
+                                            : "rating6-10"
+                                        }
+                                    >
+                                        {fermer?.rating}
+                                    </div>
+                                    <div>
+                                       <button
+                              onClick={handleRated}
+                              className="ratedButton"
+                            >
+                              Оценить
+                            </button></div>
+    </div>
+    {visible ? <Rating id={myId} /> : null}
+    </>
   );
 };
 

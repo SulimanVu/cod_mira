@@ -1,0 +1,60 @@
+.main {
+  width: 50%;
+  border-radius: 5px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+  margin: 10% auto;
+  background-color: #355c7d;
+}
+
+.main form {
+  margin-top: 30px;
+}
+
+.main form .first, .main form .second {
+  margin-top: 10px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main form .first input, .main form .second input {
+  width: 44.5%;
+  padding: 5px 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  border: none;
+}
+
+.main form .first input:focus, .main form .second input:focus {
+  outline-color: #01c38d;
+}
+
+.main button {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 50%;
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.main button:hover {
+  background-color: #01c38d;
+  color: #fff;
+}
+/*# sourceMappingURL=card.module.css.map */

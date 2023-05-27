@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./cardItem.module.scss";
 import { addToBascket, fetchFermersThunk } from "features/applicationSlice";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { likeProd } from "features/requestSlice";
 
 const CardItem = ({ image, description, price, fermer, _id }) => {
   const dispatch = useDispatch();
   const [like, setLike] = useState();
-
+  const authData = useSelector((state)=> state.application.authData)
+  const backet =  useSelector((state)=> state.application.bascket)
   const token = localStorage.getItem("token");
   const id = localStorage.getItem("id");
+  const path = useLocation()
+  console.log(path)
 
   const currentFermer = useSelector((state) =>
     state.application.fermers.find((item) => item._id == fermer)
@@ -46,12 +49,17 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
           </span>
           <span className={styles.price}> Цена: {price} ₽</span>
         </div>
+        { path?.pathname === "/bascket" ? null
+        :( 
         <button
           disabled={!token && true}
           onClick={() => dispatch(addToBascket({ id, bascket: _id }))}
         >
-          В корзину
+          {backet?.find((item)=> item._id === _id) ? <span className={styles.succes}>В корзине</span> : "В корзину"}
         </button>
+
+  )
+        }
       </div>
     </div>
   );
