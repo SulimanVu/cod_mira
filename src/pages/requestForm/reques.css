@@ -32,8 +32,7 @@ table {
 }
 
 .input-group input {
-  padding: 10px 10px;
-  margin-top: 10px;
+  padding: 2px 10px;
   min-width: 250px;
 }
 
@@ -81,7 +80,9 @@ label {
   font-size: 20px;
   font-weight: 400;
 }
-
+.input-group label {
+  margin-left: 0;
+}
 .app {
   width: 60%;
   margin: auto;
@@ -123,13 +124,13 @@ label {
 .form-stepper__step1,
 .form-stepper__step2,
 .form-stepper__step3 {
-  margin-top: 60px;
+  margin-top: 0px;
 }
 .form-stepper__step1 h2,
 .form-stepper__step2 h2,
 .form-stepper__step3 h2 {
   width: fit-content;
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
 }
 .form-stepper__step3 {
   margin-top: 30px;
@@ -142,7 +143,7 @@ label {
 }
 .form-stepper__body {
   min-height: 300px;
-  width: 900px;
+  width: 400px;
 }
 .form-stepper__action {
   display: flex;
@@ -242,7 +243,7 @@ select {
 }
 .form-stepper__step1 {
   width: 50%;
-  margin: 50px auto;
+  margin: 10px auto;
 }
 .form-stepper__step1 h2 {
   color: #fff;
@@ -353,4 +354,17 @@ select {
   outline: none;
   border-radius: 7px;
   border: none;
+}
+
+.form-stepper__action button {
+  padding: 0px 10px;
+  box-sizing: border-box;
+  font-size: 22px;
+}
+
+.form-products {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 90%;
 }
