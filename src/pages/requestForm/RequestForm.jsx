@@ -84,7 +84,7 @@ const RequestForm = ({ setAlert }) => {
         from,
         to,
         km,
-        product: likedCards.join(",", " ").toString(),
+        product: likedCards,
       })
     );
   };
