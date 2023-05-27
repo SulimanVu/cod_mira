@@ -14,7 +14,6 @@ const ProfileNav = () => {
                 <li><Link to="/profile/address">Адреса</Link></li>
                 <li><Link to="/profile/contacts">Контакты</Link></li>
                 <hr/>
-                {/* TODO сделать выход из аккаунта, удаление токена не помагает, нужно удалить REPLAIN_ */}
                 <li><Link to="/" onClick={()=> localStorage.clear()}>Exit</Link></li>
             </ul>
         </div>
