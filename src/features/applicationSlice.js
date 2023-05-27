@@ -11,6 +11,7 @@ const initialState = {
   authData: null,
   bascket: [],
   users: [],
+  isVisible:false
 };
 
 export const fetchAllUsers = createAsyncThunk(
@@ -137,6 +138,7 @@ export const following = createAsyncThunk(
 export const loginThunk = createAsyncThunk(
   "fetch/login",
   async ({ login, password }, thunkAPI) => {
+    const {dispatch} = thunkAPI
     try {
       const res = await fetch(`${serverUrl}/login`, {
         method: "POST",
@@ -152,7 +154,12 @@ export const loginThunk = createAsyncThunk(
       }
       localStorage.setItem("token", token.token);
       localStorage.setItem("id", token.id);
+
+      localStorage.setItem("user", JSON.stringify(token.user));
+
+            dispatch(userActions.setAuthData(token.user));
       localStorage.setItem("role", token.role);
+
 
       return token;
     } catch (e) {
@@ -181,11 +188,44 @@ export const addToBascket = createAsyncThunk(
     }
   }
 );
+export const rateMovie = createAsyncThunk(
+  "rate/movies",
+  async ({ rating, fermer,id }, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:3030/fermer/rate`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ rating, fermerId:fermer,id }),
+      });
+      const data = await res.json();
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 const applicationSlice = createSlice({
   name: "application",
   initialState,
-  reducers: {},
+  reducers: {
+    setAuthData:(state,action)=> {
+      state.authData = action.payload
+    },
+    initAuthData: (state) => {
+      const user = localStorage.getItem("user");
+      if (user) {
+          state.authData = JSON.parse(user);
+      }
+      
+  },
+  showRating: (state, action) => {
+    state.isVisible = !state.isVisible;
+  },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllUsers.fulfilled, (state, action) => {
@@ -237,7 +277,7 @@ const applicationSlice = createSlice({
       .addCase(fetchAuthUser.fulfilled, (state, action) => {
         state.load = false;
         state.error = null;
-        state.authData = action.payload;
+        // state.authData = action.payload;
         state.bascket = action.payload.bascket;
       })
 
@@ -245,8 +285,17 @@ const applicationSlice = createSlice({
         state.load = false;
         state.error = null;
         state.bascket = action.payload.bascket;
-      });
+      })
+      .addCase(rateMovie.fulfilled, (state, action) => {
+        state.fermers = state.fermers.map((item) => {
+          if (item._id === action.payload._id) {
+            item.rating = action.payload.rating;
+          }
+          return item;
+        });
+      })
   },
 });
+export const { actions: userActions } = applicationSlice;
 
 export default applicationSlice.reducer;

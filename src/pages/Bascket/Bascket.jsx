@@ -13,6 +13,12 @@ const Bascket = () => {
     dispatch(fetchAuthUser(id));
   }, [dispatch]);
 
+  if(bascket.length ===  0){
+    return (
+      <div className={styles.eror}><h1>Здесь пусто</h1></div>
+    )
+  }
+
   return (
     <div className={styles.bascketBlock}>
       {bascket?.map((item) => (
