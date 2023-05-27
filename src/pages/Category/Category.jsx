@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Category.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCategory } from "features/categorySlice";
@@ -11,24 +11,30 @@ const Category = () => {
     const dispatch = useDispatch()
     const categories = useSelector((state) => state.categorySlice.categories)
     const currentProducts = useSelector((state) =>
-    state.categorySlice.categories.find((item) => item._id == id)
-  );
+    state.categorySlice.categories.find((item) => item._id == id));
     
-    console.log(currentProducts.products);
+    const [click, setClick] = useState(false)
 
+    // className={active ? styles.modal + ` ` + styles.active : styles.modal}
+    console.log(currentProducts.products);
 
     useEffect(() => {
         dispatch(fetchCategory())
     }, [dispatch, ])
 
     return (
+        <>
         <div className={styles.container}>
             <section className={styles.categories}>
+            <Link to="/" className={styles.goBack}>⇦ На главную</Link>
                 <div className={styles.select}>
                     {categories?.map((obj, i) =>
                         <Link className={styles.link} to={"/categories/" + obj._id}>
                             <div 
-                            className={styles.selectItem}
+                                key={i}
+                                // onClick={() => setClick(!click)}
+                                // className={click ? styles.selectItem + ` ` + styles.backColor : styles.selectItem}
+                                className={styles.selectItem}
                             >{obj.name}</div>
                         </Link>
                     )}
@@ -36,10 +42,11 @@ const Category = () => {
             </section>
             <section className={styles.categoryItems}>
             <div>
-                <CategoryCardsPage products={currentProducts.products}/>
+                <CategoryCardsPage products={currentProducts?.products}/>
             </div>
             </section>
         </div>
+        </>
       );
 };
 
