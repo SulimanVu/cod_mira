@@ -5,11 +5,12 @@ import { rateMovie, userActions } from "features/applicationSlice";
 
 
 const Rating = ({ id }) => {
+  const myId = localStorage.getItem("id")
   const dispatch = useDispatch();
   const [rating, setRating] = useState(0);
   const handleClick = () => {
     dispatch(userActions.showRating());
-    dispatch(rateMovie({ rating, fermer: id }));
+    dispatch(rateMovie({ rating, fermer: id, myId }));
   };
   const handleFocus = (num) => {
     setRating(num);

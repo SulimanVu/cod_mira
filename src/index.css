@@ -1,0 +1,174 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.ratedButton {
+  background-color: #00a2ff;
+  border: none;
+  color: white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: large;
+  margin-left: 5%;
+  border-radius: 5px;
+  padding: 3%;
+  height: fit-contt;
+}
+
+.rating6-10 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #1c821c;
+  width: 15%;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 2%;
+  border-radius: 5px;
+}
+
+.modal1 {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-animation-name: appear;
+          animation-name: appear;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+}
+
+.modalH {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #1f1b2e;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* padding: 0.7% 1%; */
+  border-radius: 15px;
+}
+
+.modalButton {
+  color: gray;
+  border-radius: 30%;
+  border: none;
+  font-size: xx-large;
+  background-color: #1f1b2e;
+  width: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 3%;
+}
+
+.modalButton:hover {
+  background-color: #bd0f0f;
+  color: white;
+}
+
+.modalTitile {
+  margin-bottom: 3%;
+  margin-right: 20%;
+}
+
+.modalP {
+  margin-top: 0.1%;
+  color: gray;
+  font-size: small;
+  width: 29%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.rating3-6 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 5px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: yellow;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px 15px;
+  margin-bottom: 3%;
+  color: grey;
+}
+
+.rating1-3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: red;
+  width: 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-bottom: 3%;
+  color: #fcf8f8;
+}
+
+.rating0 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 5px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: grey;
+  width: 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px 15px;
+  margin-bottom: 3%;
+}
+
+.ratedButton:hover {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */

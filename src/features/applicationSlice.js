@@ -190,14 +190,14 @@ export const addToBascket = createAsyncThunk(
 );
 export const rateMovie = createAsyncThunk(
   "rate/movies",
-  async ({ rating, fermer,id }, thunkAPI) => {
+  async ({ rating, fermer,myId }, thunkAPI) => {
     try {
       const res = await fetch(`http://localhost:3030/fermer/rate`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ rating, fermerId:fermer,id }),
+        body: JSON.stringify({ rating, fermerId:fermer,id:myId}),
       });
       const data = await res.json();
 

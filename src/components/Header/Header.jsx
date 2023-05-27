@@ -36,12 +36,20 @@ const Header = () => {
         </div>
         <div className={styles.btn}>
           {authData ? (
+            <>
             <img
               className={styles.btn_item}
               src={lkicon}
               onClick={() => navigate("/profile")}
               alt="#"
             />
+            <button
+            onClick={() => navigate("/bascket")}
+            className={styles.btn_item}
+          >
+            <img src={basketIcon} alt="" />
+          </button>
+          </>
           ) : (
             <>
             <button
@@ -55,12 +63,7 @@ const Header = () => {
               >
                 <img src={lkicon} alt="" />
               </button>
-          <button
-            onClick={() => navigate("/bascket")}
-            className={styles.btn_item}
-          >
-            <img src={basketIcon} alt="" />
-          </button>
+  
           </>
           )
 }
