@@ -7,40 +7,35 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 const Category = () => {
-    const {id} = useParams()
-    const dispatch = useDispatch()
-    const categories = useSelector((state) => state.categorySlice.categories)
-    const currentProducts = useSelector((state) =>
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.categorySlice.categories);
+  const currentProducts = useSelector((state) =>
     state.categorySlice.categories.find((item) => item._id == id)
   );
-    
-    console.log(currentProducts.products);
 
+  useEffect(() => {
+    dispatch(fetchCategory());
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(fetchCategory())
-    }, [dispatch, ])
-
-    return (
-        <div className={styles.container}>
-            <section className={styles.categories}>
-                <div className={styles.select}>
-                    {categories?.map((obj, i) =>
-                        <Link className={styles.link} to={"/categories/" + obj._id}>
-                            <div 
-                            className={styles.selectItem}
-                            >{obj.name}</div>
-                        </Link>
-                    )}
-                </div>
-            </section>
-            <section className={styles.categoryItems}>
-            <div>
-                <CategoryCardsPage products={currentProducts.products}/>
-            </div>
-            </section>
+  return (
+    <div className={styles.container}>
+      <section className={styles.categories}>
+        <div className={styles.select}>
+          {categories?.map((obj, i) => (
+            <Link className={styles.link} to={"/categories/" + obj._id}>
+              <div className={styles.selectItem}>{obj.name}</div>
+            </Link>
+          ))}
         </div>
-      );
+      </section>
+      <section className={styles.categoryItems}>
+        <div>
+          <CategoryCardsPage products={currentProducts.products} />
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default Category;
