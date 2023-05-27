@@ -13,9 +13,8 @@ const ProfileNav = () => {
                 <li><Link to="/profile/credit">Моя карта</Link></li>
                 <li><Link to="/profile/address">Адреса</Link></li>
                 <li><Link to="/profile/contacts">Контакты</Link></li>
-                {/*<Outlet/>*/}
                 <hr/>
-                {/* TODO: сделать выход из аккаунта, удаление токена не помагает, нужно удалить REPLAIN_ */}
+                {/* TODO сделать выход из аккаунта, удаление токена не помагает, нужно удалить REPLAIN_ */}
                 <li><Link to="/" onClick={()=> localStorage.removeItem("token")}>Exit</Link></li>
             </ul>
         </div>
