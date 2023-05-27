@@ -13,9 +13,8 @@ const Category = () => {
     const currentProducts = useSelector((state) =>
     state.categorySlice.categories.find((item) => item._id == id));
     
-    const [click, setClick] = useState(false)
+    // const [click, setClick] = useState('')
 
-    // className={active ? styles.modal + ` ` + styles.active : styles.modal}
     console.log(currentProducts.products);
 
     useEffect(() => {
@@ -32,8 +31,8 @@ const Category = () => {
                         <Link className={styles.link} to={"/categories/" + obj._id}>
                             <div 
                                 key={i}
-                                // onClick={() => setClick(!click)}
-                                // className={click ? styles.selectItem + ` ` + styles.backColor : styles.selectItem}
+                                // onClick={() => setClick(i)}
+                                // className={click === key ? styles.selectItem + ` ` + styles.backColor : styles.selectItem}
                                 className={styles.selectItem}
                             >{obj.name}</div>
                         </Link>
