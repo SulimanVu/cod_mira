@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./cardItem.module.scss";
 import { addToBascket } from "features/applicationSlice";
 import { fetchFermersThunk } from "features/applicationSlice";
+import { Link } from "react-router-dom";
 
 const CardItem = ({ image, description, price, fermer, _id }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,6 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
     state.application.fermers.find((item) => item._id == fermer)
   );
 
-  console.log(currentFermer);
   const handleLike = (e) => {
     e.preventDefault();
     setLike(!like);
@@ -38,7 +38,11 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
               ? description.slice(0, 25) + "..."
               : description}
           </span>
-          <span className={styles.fermer}>{currentFermer?.name}</span>
+          <span className={styles.fermer}>
+            <Link to={`/fermer/${currentFermer?._id}`}>
+              {currentFermer?.name}
+            </Link>
+          </span>
           <span className={styles.price}> Цена: {price} ₽</span>
         </div>
         <button

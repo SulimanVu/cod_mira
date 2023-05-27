@@ -112,6 +112,27 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+export const following = createAsyncThunk(
+  "following/fermer",
+  async ({ idUser, myId }, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/following`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ idUser, myId }),
+      });
+      const data = await res.json();
+      thunkAPI.dispatch(fetchAuthUser);
+
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
 export const loginThunk = createAsyncThunk(
   "fetch/login",
   async ({ login, password }, thunkAPI) => {
