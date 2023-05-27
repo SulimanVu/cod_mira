@@ -17,7 +17,10 @@ import { fetchAuthUser } from "features/applicationSlice";
 import { useEffect, useState } from "react";
 import RequestForm from "pages/requestForm/RequestForm";
 import FermerPage from "pages/FermerPage/FermerPage";
+import PaymentOptions from "components/Payment/Payment";
+import AddProd from "components/Profile/AddProd";
 import Request from "components/Request/Request";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +47,9 @@ function App() {
         <Route path="/profile/credit" element={<CreditCard />} />
         <Route path="/profile/address" element={<Address />} />
         <Route path="/profile/contacts" element={<Contacts />} />
+        <Route path="/profile/addProd" element={<AddProd />} />
         <Route path="/fermer/:id" element={<FermerPage />} />
+        <Route path="/pay" element={<PaymentOptions />} />
         <Route path="/delivery" element={<RequestForm setAlert={setAlert} />} />
         <Route path="/request" element={<Request />} />
       </Routes>
