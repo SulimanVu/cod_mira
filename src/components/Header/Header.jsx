@@ -37,13 +37,12 @@ const Header = () => {
         <div className={styles.btn}>
           {
           authData ?(
-            <div onClick={()=> navigate("/profile")}>Профиль</div>
+            <img className={styles.btn_item} src={lkicon} onClick={()=> navigate("/profile")}/>
           ):(
             <>
             <button
             onClick={() => setActiveAuth(!activeAuth)}
-            className={styles.btn_item}
-          >
+            className={styles.btn_item}>
             <img src={registerIcon} alt="" />
           </button>
           <button
