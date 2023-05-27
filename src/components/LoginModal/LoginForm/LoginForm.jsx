@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD
+
 import   {fetchAuthUser, loginThunk}   from "features/applicationSlice";
 import styles from './LoginForm.module.scss'
-=======
-import { loginThunk } from "features/applicationSlice";
-import styles from "./LoginForm.module.scss";
->>>>>>> main
+
+
 
 import { ToastContainer, toast } from "react-toastify";
 
@@ -17,56 +15,9 @@ export const LoginForm = ({ activeLogin, setActiveLogin }) => {
   const error = useSelector((state) => state.application.error);
   const token = useSelector((state) => state.application.token);
 
-<<<<<<< HEAD
-
-
-export const LoginForm = ({activeLogin, setActiveLogin}) => {
-    console.log(localStorage.getItem('id'))
-
-    const dispatch = useDispatch()
-    const [login, setLogin] = useState('')
-    const [password, setPassword] = useState('')
-    const error = useSelector((state)=> state.application.error)
-    const token = useSelector((state)=> state.application.token)
-    const id = localStorage.getItem("id")
-
-    useEffect(()=>{
-        if(token){
-            setActiveLogin(false)
-        }
-    },[token])
-
-    const Toaster = (text) => {
-      toast.error(text,);
-    };
-
-    const handleValidation = ({ login, password }) => {
-      if (password === "") {
-        Toaster("Пароль - обьязательное поле!");
-        return false;
-      } else if (login === '') {
-        Toaster("Логин - обьязательное поле!");
-        return false;
-      } else if (password.length < 8) {
-        Toaster("Пароль не должен быть меньше 8 символов!");
-        return false;
-      } 
-      return true
-    };
-
-    const handleLogin = (e,{login, password}) => {
-      e.preventDefault();
-      if(handleValidation({login,password})) {
-        dispatch(loginThunk({login, password}))
-        setLogin('')
-        setPassword('')
-        // dispatch(fetchAuthUser(id))
-      }
-=======
   useEffect(() => {
     if (token) {
       setActiveLogin(false);
->>>>>>> main
     }
   }, [token]);
 

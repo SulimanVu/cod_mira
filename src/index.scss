@@ -10,3 +10,112 @@ body {
   width: 80%;
   margin: auto;
 }
+
+.ratedButton {
+  background-color: #00a2ff;
+  border: none;
+  color: white;
+  box-sizing: border-box;
+  font-size: large;
+  margin-left: 5%;
+  border-radius: 5px;
+  padding: 3%;
+  height: fit-contt;
+}
+.rating6-10 {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(28, 130, 28);
+  width: 15%;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 2%;
+  border-radius: 5px;
+}
+.modal1 {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  animation-name: appear;
+  animation-duration: 300ms;
+}
+
+.modalH {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #1f1b2e;
+  box-sizing: border-box;
+  /* padding: 0.7% 1%; */
+  border-radius: 15px;
+}
+
+.modalButton {
+  color: gray;
+  border-radius: 30%;
+  border: none;
+  font-size: xx-large;
+  background-color: #1f1b2e;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 3%;
+}
+.modalButton:hover {
+  background-color: rgb(189, 15, 15);
+  color: white;
+}
+.modalTitile {
+  margin-bottom: 3%;
+  margin-right: 20%;
+}
+.modalP {
+  margin-top: 0.1%;
+  color: gray;
+  font-size: small;
+  width: 29%;
+  display: flex;
+  justify-content: space-between;
+}
+.rating3-6 {
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  background-color: yellow;
+  box-sizing: border-box;
+  padding: 5px 15px;
+  margin-bottom: 3%;
+  color: grey;
+}
+.rating1-3 {
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  width: 30px;
+  box-sizing: border-box;
+  padding: 2%;
+  border-radius: 5px;
+  margin-bottom: 3%;
+  color: rgb(252, 248, 248);
+}
+.rating0 {
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  background-color: grey;
+  width: 30px;
+  box-sizing: border-box;
+  padding: 2%;
+  margin-bottom: 3%;
+}
+.ratedButton:hover {
+  background-color: red;
+}

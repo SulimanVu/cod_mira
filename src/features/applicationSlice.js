@@ -10,6 +10,7 @@ const initialState = {
   authData: null,
   bascket: [],
   users: [],
+  isVisible:false
 };
 
 export const fetchAllUsers = createAsyncThunk(
@@ -183,6 +184,25 @@ export const addToBascket = createAsyncThunk(
     }
   }
 );
+export const rateMovie = createAsyncThunk(
+  "rate/movies",
+  async ({ rating, fermer,id }, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:3030/fermer/rate`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ rating, fermerId:fermer,id }),
+      });
+      const data = await res.json();
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 const applicationSlice = createSlice({
   name: "application",
@@ -197,6 +217,9 @@ const applicationSlice = createSlice({
           state.authData = JSON.parse(user);
       }
       
+  },
+  showRating: (state, action) => {
+    state.isVisible = !state.isVisible;
   },
   },
   extraReducers: (builder) => {
@@ -258,7 +281,15 @@ const applicationSlice = createSlice({
         state.load = false;
         state.error = null;
         state.bascket = action.payload.bascket;
-      });
+      })
+      .addCase(rateMovie.fulfilled, (state, action) => {
+        state.fermers = state.fermers.map((item) => {
+          if (item._id === action.payload._id) {
+            item.rating = action.payload.rating;
+          }
+          return item;
+        });
+      })
   },
 });
 export const { actions: userActions } = applicationSlice;
