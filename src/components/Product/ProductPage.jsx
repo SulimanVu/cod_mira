@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ProductCard } from "./ProductCard/ProductCard"
 import styles from "./ProductPage.module.scss"
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategory } from 'features/categorySlice';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
 export const ProductPage = () => {
-    const currentFermer = useSelector((state) => state.categorySlice.categories.find((item) => console.log(item._id)));
     let categories = useSelector((state) => state.categorySlice.categories)
 
     if(categories.length >= 3) categories = categories.slice(0, 2)
