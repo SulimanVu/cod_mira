@@ -35,10 +35,9 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
       <div className={styles.info}>
         <div className={styles.spanBlock}>
           <span className={styles.description}>
-            {/* {description.length > 26
+            {description && description.length > 26
               ? description.slice(0, 25) + "..."
-              : description} */}
-            {description}
+              : description}
           </span>
           <span className={styles.fermer}>
             <Link to={`/fermer/${currentFermer?._id}`}>
