@@ -11,7 +11,7 @@ const Bookmarks = () => {
                     <option value="">filter 1</option>
                     <option value="">filter 2</option>
                 </select>
-                {/*    TODO: добавить карточки*/}
+                {/*    TODO добавить карточки*/}
             </div>
         </div>
     );
