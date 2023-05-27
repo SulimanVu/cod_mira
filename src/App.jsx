@@ -22,7 +22,6 @@ import FermerPage from "pages/FermerPage/FermerPage";
 function App() {
   const dispatch = useDispatch();
   const id = localStorage.getItem("id");
-  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -44,10 +43,6 @@ function App() {
         <Route path="/profile/credit" element={<CreditCard />} />
         <Route path="/profile/address" element={<Address />} />
         <Route path="/profile/contacts" element={<Contacts />} />
-        <Route
-          path="/addRequest"
-          element={<RequestForm setAlert={setAlert} />}
-        />
         <Route path="/fermer/:id" element={<FermerPage />} />
       </Routes>
       <Footer />
