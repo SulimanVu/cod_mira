@@ -12,22 +12,22 @@ import Bookmarks from "./components/Profile/Bookmarks";
 import Orders from "./components/Profile/Orders";
 import Address from "./components/Profile/Address";
 import CreditCard from "./components/Profile/CreditCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchAuthUser } from "features/applicationSlice";
 import { useEffect, useState } from "react";
 import RequestForm from "pages/requestForm/RequestForm";
 import styles from "./index.scss";
 import FermerPage from "pages/FermerPage/FermerPage";
+import {userActions} from "features/applicationSlice"
 
 function App() {
   const dispatch = useDispatch();
   const id = localStorage.getItem("id");
+  const token = useSelector((state)=> state.application.token)
 
   useEffect(() => {
-    if (id) {
-      dispatch(fetchAuthUser(id));
-    }
-  }, [id]);
+    dispatch(userActions.initAuthData());
+}, [dispatch]);
   return (
     <div className="App">
       <Header />

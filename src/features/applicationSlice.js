@@ -136,6 +136,7 @@ export const following = createAsyncThunk(
 export const loginThunk = createAsyncThunk(
   "fetch/login",
   async ({ login, password }, thunkAPI) => {
+    const {dispatch} = thunkAPI
     try {
       const res = await fetch(`${serverUrl}/login`, {
         method: "POST",
@@ -151,6 +152,9 @@ export const loginThunk = createAsyncThunk(
       }
       localStorage.setItem("token", token.token);
       localStorage.setItem("id", token.id);
+      localStorage.setItem("user", JSON.stringify(token.user));
+
+            dispatch(userActions.setAuthData(token.user));
 
       return token;
     } catch (e) {
@@ -183,7 +187,18 @@ export const addToBascket = createAsyncThunk(
 const applicationSlice = createSlice({
   name: "application",
   initialState,
-  reducers: {},
+  reducers: {
+    setAuthData:(state,action)=> {
+      state.authData = action.payload
+    },
+    initAuthData: (state) => {
+      const user = localStorage.getItem("user");
+      if (user) {
+          state.authData = JSON.parse(user);
+      }
+      
+  },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllUsers.fulfilled, (state, action) => {
@@ -235,7 +250,7 @@ const applicationSlice = createSlice({
       .addCase(fetchAuthUser.fulfilled, (state, action) => {
         state.load = false;
         state.error = null;
-        state.authData = action.payload;
+        // state.authData = action.payload;
         state.bascket = action.payload.bascket;
       })
 
@@ -246,5 +261,6 @@ const applicationSlice = createSlice({
       });
   },
 });
+export const { actions: userActions } = applicationSlice;
 
 export default applicationSlice.reducer;

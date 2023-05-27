@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import   {loginThunk}   from "features/applicationSlice";
+import   {fetchAuthUser, loginThunk}   from "features/applicationSlice";
 import styles from './LoginForm.module.scss'
 
 import { ToastContainer, toast } from "react-toastify";
@@ -16,6 +16,7 @@ export const LoginForm = ({activeLogin, setActiveLogin}) => {
     const [password, setPassword] = useState('')
     const error = useSelector((state)=> state.application.error)
     const token = useSelector((state)=> state.application.token)
+    const id = localStorage.getItem("id")
 
     useEffect(()=>{
         if(token){
@@ -47,6 +48,7 @@ export const LoginForm = ({activeLogin, setActiveLogin}) => {
         dispatch(loginThunk({login, password}))
         setLogin('')
         setPassword('')
+        // dispatch(fetchAuthUser(id))
       }
     }
 
