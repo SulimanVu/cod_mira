@@ -15,14 +15,11 @@ import CreditCard from "./components/Profile/CreditCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAuthUser } from "features/applicationSlice";
 import { useEffect, useState } from "react";
-import RequestForm from "pages/requestForm/RequestForm";
-import FermerPage from "pages/FermerPage/FermerPage";
-
-import {userActions} from "features/applicationSlice"
-import PaymentOptions from "components/Payment/Payment";
-import AddProd from "components/Profile/AddProd";
-import Request from "components/Request/Request";
-
+import RequestForm from "./pages/requestForm/RequestForm";
+import FermerPage from "./pages/FermerPage/FermerPage";
+import PaymentOptions from "./components/Payment/Payment";
+import AddProd from "./components/Profile/AddProd";
+import Request from "./components/Request/Request";
 
 function App() {
   const dispatch = useDispatch();

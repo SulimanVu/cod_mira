@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardItem from "../CardItem/CardItem";
 import { fetchProd } from "../../features/productSlice";
@@ -14,7 +14,7 @@ const CardsMapper = () => {
 
   return (
     <div className={styles.cardsMapper}>
-      {products.map((item) => (
+      {products.slice(0, 12).map((item) => (
         <CardItem {...item} />
       ))}
     </div>
