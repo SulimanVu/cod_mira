@@ -1,16 +1,13 @@
-// import React from "react";
-// import styles from "./Category.module.css";
-// import { ProductCard } from "components/Product/ProductCard/ProductCard";
-// import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import styles from "./Category.module.scss";
+import { ProductCard } from "components/Product/ProductCard/ProductCard";
 
-// const CategoryCardsPage = () => {
-//     const categories = useSelector((state) => state.categorySlice.categories)
+const CategoryCardsPage = ({products}) => {
+    return (
+        <div className={styles.cards}>
+            {products?.map(item => <ProductCard img={item.image} title={item.name} />)}
+        </div>
+    );
+}
 
-//     return (
-//         <div className={styles.cards}>
-//             {categories[0]?.products.map(item => <ProductCard img={item.image} title={item.name} />)}
-//         </div>
-//     )
-// }
-
-// export default CategoryCardsPage
+export default CategoryCardsPage
