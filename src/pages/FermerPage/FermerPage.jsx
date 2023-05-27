@@ -41,6 +41,10 @@ const FermerPage = () => {
       <div>
         <h3>{fermer?.name}</h3>
         <p>{fermer?.title}</p>
+        
+        <h3>Подписчики: {fermer?.followers.length}</h3>
+        <h3>Подписки: {fermer?.mySubscribers.length}</h3>
+
         <div className={styles.contacts}>
           <div>
             <img src={require("../../icons/phone.png")} alt="#" />

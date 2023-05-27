@@ -24,11 +24,9 @@ const Header = () => {
     <div className={styles.header}>
       <div className={styles.nav_list}>
         <div className={styles.nav_list_item}>
-          <div className={styles.logo}>
-            <Link to="/">
-              <img src={logo} alt="" />
-            </Link>
-          </div>
+          <Link to="/" className={styles.logo}>
+            <img src={logo} alt="" />
+          </Link>
           <ul className={styles.ul}>
             <li>Кто мы</li>
             <li onClick={() => navigate("/fermers")}>Поставщики</li>
