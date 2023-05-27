@@ -26,6 +26,7 @@ const ProfileNav = () => {
                 <li><Link to="/profile/credit">Моя карта</Link></li>
                 <li><Link to="/profile/address">Адреса</Link></li>
                 <li><Link to="/profile/contacts">Контакты</Link></li>
+
                 {
                     user?.map(item => {
                         if (item.role == 'Фермер' && item._id == myId) {
@@ -39,6 +40,8 @@ const ProfileNav = () => {
                 {/* TODO: сделать выход из аккаунта, удаление токена не помагает, нужно удалить REPLAIN_ */}
                 <li><Link to="/" onClick={()=> localStorage.removeItem("token")}>Exit</Link></li>
 
+                <hr/>
+                <li><Link to="/" onClick={()=> localStorage.clear()}>Exit</Link></li>
             </ul>
         </div>
     );

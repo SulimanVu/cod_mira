@@ -42,6 +42,7 @@ export const addRequest = createAsyncThunk(
           kg,
           price,
           product,
+          fermer: "6470e3cd64c8962de7cf327f",
         }),
       });
       const data = await res.json();

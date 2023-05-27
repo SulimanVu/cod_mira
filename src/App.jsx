@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Main from "./pages/Main/Main";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -19,6 +19,8 @@ import RequestForm from "pages/requestForm/RequestForm";
 import FermerPage from "pages/FermerPage/FermerPage";
 import PaymentOptions from "components/Payment/Payment";
 import AddProd from "components/Profile/AddProd";
+import Request from "components/Request/Request";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +51,7 @@ function App() {
         <Route path="/fermer/:id" element={<FermerPage />} />
         <Route path="/pay" element={<PaymentOptions />} />
         <Route path="/delivery" element={<RequestForm setAlert={setAlert} />} />
+        <Route path="/request" element={<Request />} />
       </Routes>
       <Footer />
     </div>

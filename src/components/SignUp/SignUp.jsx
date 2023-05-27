@@ -112,7 +112,7 @@ const SignUp = ({ activeAuth, setActiveAuth }) => {
               />
               <label>Номер:</label>
               <input
-                type="number"
+                type="tel"
                 maxLength={16}
                 className={styles.input}
                 placeholder="Введите номер телефона:"
@@ -122,7 +122,7 @@ const SignUp = ({ activeAuth, setActiveAuth }) => {
               <label>Почта:</label>
               <input
                 className={styles.input}
-                type="text"
+                type="email"
                 placeholder="Введите почту:"
                 value={mail}
                 onChange={(e) => setMail(e.target.value)}

@@ -1,11 +1,12 @@
-import React from "react";
-import { ProductCard } from "./ProductCard/ProductCard";
-import styles from "./ProductPage.module.scss";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { ProductCard } from "./ProductCard/ProductCard"
+import styles from "./ProductPage.module.scss"
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 export const ProductPage = () => {
-  let categories = useSelector((state) => state.categorySlice.categories);
+    let categories = useSelector((state) => state.categorySlice.categories)
 
   if (categories.length >= 3) categories = categories.slice(0, 2);
 
