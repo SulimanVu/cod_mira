@@ -12,7 +12,6 @@ const SignUp = ({ activeAuth, setActiveAuth }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [selectValue,setSelectValue] = useState("Фермер")
-  console.log(selectValue)
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [phone, setPhone] = useState("");

@@ -6,9 +6,9 @@
   flex-direction: column;
   background-color: #ebeaea;
   position: relative;
-  justify-content: space-between;
+  // justify-content: space-between;
   img {
-    height: 300px;
+    max-height: 250px;
     object-fit: cover;
   }
   .like {
@@ -42,6 +42,7 @@
 
 .info {
   display: flex;
+  height: 100%;
   justify-content: space-between;
   flex-direction: column;
   margin: 10px 0 30px 10px;
@@ -52,6 +53,8 @@
   }
   .description {
     font-size: 23px;
+    line-height: 22px;
+    align-self: start;
   }
   .fermer {
     color: #a8a8a8;
@@ -60,9 +63,6 @@
     &:hover {
       color: rgb(200, 35, 35);
     }
-  }
-  .price {
-    margin-top: 20px;
   }
   button {
     outline: none;

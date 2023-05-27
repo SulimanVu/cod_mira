@@ -17,6 +17,7 @@ import { fetchAuthUser } from "features/applicationSlice";
 import { useEffect, useState } from "react";
 import RequestForm from "pages/requestForm/RequestForm";
 import styles from "./index.scss";
+import FermerPage from "pages/FermerPage/FermerPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,9 +32,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className={alert ? styles.alert : styles.alertoff}>
-        <p>1</p>
-      </div>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/fermers" element={<Fermers />} />
@@ -50,6 +48,7 @@ function App() {
           path="/addRequest"
           element={<RequestForm setAlert={setAlert} />}
         />
+        <Route path="/fermer/:id" element={<FermerPage />} />
       </Routes>
       <Footer />
     </div>
