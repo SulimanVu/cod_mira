@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./header.module.scss";
 import logo from "../../icons/logo.svg";
 import lkicon from "../../icons/user_icon_150670.png";
@@ -10,11 +10,15 @@ import registerIcon from "icons/auth_sim_icon_180993.png"
 import { LoginModal } from "components/LoginModal";
 import SignUp from "components/SignUp/SignUp";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
   const [activeAuth, setActiveAuth] = useState(false);
   const [activeLogin, setActiveLogin] = useState(false);
+  const authData = useSelector((state)=> state.application.authData)
+
+
 
   return (
     <div className={styles.header}>
@@ -31,7 +35,12 @@ const Header = () => {
           </ul>
         </div>
         <div className={styles.btn}>
-          <button
+          {
+          authData ?(
+            <div onClick={()=> navigate("/profile")}>Профиль</div>
+          ):(
+            <>
+            <button
             onClick={() => setActiveAuth(!activeAuth)}
             className={styles.btn_item}
           >
@@ -49,6 +58,9 @@ const Header = () => {
           >
             <img src={basketIcon} alt="" />
           </button>
+          </>
+          )
+}
         </div>
       </div>
       <LoginModal activeLogin={activeLogin} setActiveLogin={setActiveLogin} />

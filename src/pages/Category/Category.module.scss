@@ -1,6 +1,8 @@
 .container {
     width: 80%;
-    margin: auto; 
+    height: auto;
+    margin: auto;
+    margin-bottom: 100px; 
     display: flex; 
     flex-direction: row;
 }
@@ -31,4 +33,11 @@
 
 .categoryItems {
     order:2;
+}
+
+.link {
+    color: black;
+    &:hover {
+        color: black;
+    }
 }

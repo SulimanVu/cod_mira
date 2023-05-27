@@ -1,6 +1,11 @@
+.productPageContainer {
+  width: 80%;
+  margin: auto;
+}
+
 .cards {
     display: flex;
-    justify-content: flex-end; // flex-start start center
+    justify-content: flex-end;
     flex-wrap: wrap;
 }
 
@@ -12,5 +17,8 @@
 }
 
 .categoryName {
+  position: absolute;
   font-size: 20px;
+  padding-top: 30px;
+  padding-left: 50px;
 }

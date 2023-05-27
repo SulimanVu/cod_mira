@@ -9,7 +9,21 @@ const initialState = {
   fermers: [],
   authData: null,
   bascket: [],
+  users: [],
 };
+
+export const fetchAllUsers = createAsyncThunk(
+  "fetch/AllUsers/",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/users`);
+      const data = await res.json();
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
 export const authThunk = createAsyncThunk(
   "fetch/auth",
   async (
@@ -77,6 +91,48 @@ export const fetchAuthUser = createAsyncThunk(
   }
 );
 
+export const updateUser = createAsyncThunk(
+  "fetch/auth22",
+  async ({ name, surname, phone, mail, id }, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/updateUser/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, surname, phone, mail }),
+      });
+      const data = await res.json();
+      thunkAPI.dispatch(fetchAuthUser);
+
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+export const following = createAsyncThunk(
+  "following/fermer",
+  async ({ idUser, myId }, thunkAPI) => {
+    try {
+      const res = await fetch(`${serverUrl}/following`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ idUser, myId }),
+      });
+      const data = await res.json();
+      thunkAPI.dispatch(fetchAuthUser);
+
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
 export const loginThunk = createAsyncThunk(
   "fetch/login",
   async ({ login, password }, thunkAPI) => {
@@ -130,6 +186,9 @@ const applicationSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchAllUsers.fulfilled, (state, action) => {
+        state.users = action.payload;
+      })
       .addCase(authThunk.pending, (state, action) => {
         state.load = true;
       })

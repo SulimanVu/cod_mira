@@ -1,19 +1,17 @@
+import RequestForm from "pages/requestForm/RequestForm";
 import styles from "./profile.module.scss";
-import profileNav from "./profileNav";
 import ProfileNav from "./profileNav";
+import { useState } from "react";
 
 const Orders = () => {
-    return (
-        <div className={styles.profile}>
-            <ProfileNav/>
-            <div className={styles.rightCard}>
-                <select className={styles.filterBookmarks}>
-                    <option ></option>
-                </select>
-            {/*    TODO: добавить карточки*/}
-            </div>
-        </div>
-    );
-}
+  const [alert, setAlert] = useState(false);
+
+  return (
+    <div className={styles.profile}>
+      <ProfileNav />
+      <RequestForm setAlert={setAlert} />
+    </div>
+  );
+};
 
 export default Orders;

@@ -6,8 +6,9 @@
   flex-direction: column;
   background-color: #ebeaea;
   position: relative;
+  // justify-content: space-between;
   img {
-    height: 300px;
+    max-height: 250px;
     object-fit: cover;
   }
   .like {
@@ -41,15 +42,48 @@
 
 .info {
   display: flex;
+  height: 100%;
+  justify-content: space-between;
   flex-direction: column;
   margin: 10px 0 30px 10px;
+  .spanBlock {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+  }
   .description {
     font-size: 23px;
+    line-height: 22px;
+    align-self: start;
   }
   .fermer {
     color: #a8a8a8;
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover {
+      color: rgb(200, 35, 35);
+    }
   }
-  .price {
-    margin-top: 20px;
+  button {
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 20px auto 0;
+    width: 70%;
+    padding: 10px 20px;
+    transition: 0.4s;
+    align-self: flex-end;
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+    &:disabled {
+      color: #a8a8a8;
+    }
+    &:disabled:hover {
+      background-color: #fff;
+      color: #a8a8a8;
+    }
   }
 }
