@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./request.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+
 import {
   deleteRequest,
   fetchRequest,
@@ -15,7 +15,6 @@ import { useState } from "react";
 import Card from "../Card/Card";
 
 const Request = () => {
-  const { id } = useParams();
   const [card, setCard] = useState(true);
   const dispatch = useDispatch();
 
@@ -23,11 +22,7 @@ const Request = () => {
     dispatch(fetchRequest());
   }, [dispatch]);
 
-  const request = useSelector((state) =>
-    state.request.request.filter((item) => {
-      return item.user === id;
-    })
-  );
+  const request = useSelector((state) => state.request.request);
 
   const handleDelete = (id) => {
     toast.success("Ваша заявка отменена...", {
@@ -65,15 +60,6 @@ const Request = () => {
                     <div>Заявка №&ensp;{index + 1}</div>
                     <div className={styles.delete}>
                       <button onClick={() => handleDelete(item._id)}>x</button>
-                    </div>
-                    <div>
-                      <span>Водитель :</span>&ensp; {item.car.name}
-                    </div>
-                    <div>
-                      <span>Номер для связи :</span>&ensp; {item.car.phone}
-                    </div>
-                    <div>
-                      <span>Ваша машина :</span>&ensp; {item.car.model}
                     </div>
                     <div>
                       <span>Отправка от :</span>&ensp; {item.from}
