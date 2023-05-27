@@ -15,6 +15,7 @@ import CreditCard from "./components/Profile/CreditCard";
 import { useDispatch } from "react-redux";
 import { fetchAuthUser } from "features/applicationSlice";
 import { useEffect, useState } from "react";
+import RequestForm from "pages/requestForm/RequestForm";
 import FermerPage from "pages/FermerPage/FermerPage";
 import PaymentOptions from "components/Payment/Payment";
 import AddProd from "components/Profile/AddProd";
@@ -22,6 +23,7 @@ import AddProd from "components/Profile/AddProd";
 function App() {
   const dispatch = useDispatch();
   const id = localStorage.getItem("id");
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -37,7 +39,7 @@ function App() {
         <Route path="/bascket" element={<Bascket />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/categories" element={<Category />} />
+        <Route path="/categories/:id" element={<Category />} />
         <Route path="/profile/bookmarks" element={<Bookmarks />} />
         <Route path="/profile/orders" element={<Orders />} />
         <Route path="/profile/credit" element={<CreditCard />} />
@@ -46,6 +48,7 @@ function App() {
         <Route path="/profile/addProd" element={<AddProd />} />
         <Route path="/fermer/:id" element={<FermerPage />} />
         <Route path="/pay" element={<PaymentOptions />} />
+        <Route path="/delivery" element={<RequestForm setAlert={setAlert} />} />
       </Routes>
       <Footer />
     </div>

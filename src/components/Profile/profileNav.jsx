@@ -35,6 +35,10 @@ const ProfileNav = () => {
                 }
                 <hr />
                 <li><a href="">Exit</a></li>
+                <hr/>
+                {/* TODO: сделать выход из аккаунта, удаление токена не помагает, нужно удалить REPLAIN_ */}
+                <li><Link to="/" onClick={()=> localStorage.removeItem("token")}>Exit</Link></li>
+
             </ul>
         </div>
     );

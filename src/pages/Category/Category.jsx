@@ -1,45 +1,41 @@
-import React, { useEffect } from "react";
-import styles from "./Category.module.css";
+import React, { useEffect, useState } from "react";
+import styles from "./Category.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCategory } from "features/categorySlice";
-import { ProductCard } from "components/Product/ProductCard/ProductCard";
 import CategoryCardsPage from "./CategoryCardsPage";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 const Category = () => {
-    const dispatch = useDispatch()
-    const categories = useSelector((state) => state.categorySlice.categories)
-    let mainCatProducts = categories[0]?.products
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.categorySlice.categories);
+  const currentProducts = useSelector((state) =>
+    state.categorySlice.categories.find((item) => item._id == id)
+  );
 
-    useEffect(() => {
-        dispatch(fetchCategory())
-    }, [dispatch, mainCatProducts])
-    
-    const handleSelectCategory = (index) => {
-        mainCatProducts = categories[index]?.products
-        return mainCatProducts
-    }
+  useEffect(() => {
+    dispatch(fetchCategory());
+  }, [dispatch]);
 
-    return (
-        <div className={styles.container}>
-            <section className={styles.categories}>
-                <div className={styles.select}>
-                    {categories.map((obj, i) =>
-                        <div 
-                            className={styles.selectItem}
-                            onClick={(e) => handleSelectCategory(i)}
-                        >{obj.name}</div>
-                    )}
-                </div>
-            </section>
-            <section className={styles.categoryItems}>
-            <div>
-                <div className={styles.cards}>
-                    {mainCatProducts?.map(item => <ProductCard img={item.image} title={item.name} />)}
-                </div>
-            </div>
-            </section>
+  return (
+    <div className={styles.container}>
+      <section className={styles.categories}>
+        <div className={styles.select}>
+          {categories?.map((obj, i) => (
+            <Link className={styles.link} to={"/categories/" + obj._id}>
+              <div className={styles.selectItem}>{obj.name}</div>
+            </Link>
+          ))}
         </div>
-      );
+      </section>
+      <section className={styles.categoryItems}>
+        <div>
+          <CategoryCardsPage products={currentProducts.products} />
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default Category;

@@ -5,7 +5,7 @@ import lkicon from "../../icons/user_icon_150670.png";
 import basketIcon from "../../icons/353439-basket-buy-cart-ecommerce-online-purse-shop-shopping_107515.png";
 import { Portal } from "components/Modal/Portal/Portal";
 
-import registerIcon from "icons/auth_sim_icon_180993.png"
+import registerIcon from "icons/auth_sim_icon_180993.png";
 
 import { LoginModal } from "components/LoginModal";
 import SignUp from "components/SignUp/SignUp";
@@ -16,9 +16,8 @@ const Header = () => {
   const navigate = useNavigate();
   const [activeAuth, setActiveAuth] = useState(false);
   const [activeLogin, setActiveLogin] = useState(false);
+
   const authData = useSelector((state)=> state.application.authData)
-
-
 
   return (
     <div className={styles.header}>
@@ -30,28 +29,31 @@ const Header = () => {
           <ul className={styles.ul}>
             <li>Кто мы</li>
             <li onClick={() => navigate("/fermers")}>Поставщики</li>
-            <li>Доставка</li>
+            <li onClick={() => navigate("/delivery")}>Доставка</li>
             <li>О нас</li>
           </ul>
         </div>
         <div className={styles.btn}>
-          {
-          authData ?(
-            <div onClick={()=> navigate("/profile")}>Профиль</div>
-          ):(
+          {authData ? (
+            <img
+              className={styles.btn_item}
+              src={lkicon}
+              onClick={() => navigate("/profile")}
+              alt="#"
+            />
+          ) : (
             <>
             <button
             onClick={() => setActiveAuth(!activeAuth)}
-            className={styles.btn_item}
-          >
+            className={styles.btn_item}>
             <img src={registerIcon} alt="" />
           </button>
-          <button
-            onClick={() => setActiveLogin(!activeLogin)}
-            className={styles.btn_item}
-          >
-            <img src={lkicon} alt="" />
-          </button>
+              <button
+                  onClick={() => setActiveLogin(!activeLogin)}
+                  className={styles.btn_item}
+              >
+                <img src={lkicon} alt="" />
+              </button>
           <button
             onClick={() => navigate("/bascket")}
             className={styles.btn_item}

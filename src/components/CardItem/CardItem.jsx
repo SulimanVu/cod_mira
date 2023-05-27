@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./cardItem.module.scss";
-import { addToBascket } from "features/applicationSlice";
-import { fetchFermersThunk } from "features/applicationSlice";
+import { addToBascket, fetchFermersThunk } from "features/applicationSlice";
 import { Link } from "react-router-dom";
+import { likeProd } from "features/requestSlice";
 
 const CardItem = ({ image, description, price, fermer, _id }) => {
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
   const handleLike = (e) => {
     e.preventDefault();
     setLike(!like);
+    dispatch(likeProd(_id));
   };
 
   useEffect(() => {
@@ -34,9 +35,10 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
       <div className={styles.info}>
         <div className={styles.spanBlock}>
           <span className={styles.description}>
-            {description.length > 26
+            {/* {description.length > 26
               ? description.slice(0, 25) + "..."
-              : description}
+              : description} */}
+            {description}
           </span>
           <span className={styles.fermer}>
             <Link to={`/fermer/${currentFermer?._id}`}>

@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 
 
 export const ProductCard = ({img, title}) => {
-    // const categories = useSelector((state) => state.categorySlice.categories)
-
     return (
         <div className={styles.container}>
             <img className={styles.img} src={img} alt="" />

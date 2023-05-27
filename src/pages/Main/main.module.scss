@@ -15,9 +15,11 @@
         border-radius: 8px;
         background-color: rgb(240, 239, 239);
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        width: 22%;
+        width: 24%;
+        span{
+          margin-left: 15px;
+        }
       }
     }
     .bg {

@@ -1,7 +1,6 @@
 import React from "react";
 import "./reques.css";
 
-
 const Headerform = ({ step, handleStep }) => {
   return (
     <div className="requestbody">
@@ -15,6 +14,9 @@ const Headerform = ({ step, handleStep }) => {
           </div>
           <div className={`step-header__step ${step >= 3 ? "completed" : ""}`}>
             <h2>3</h2>
+          </div>
+          <div className={`step-header__step ${step >= 4 ? "completed" : ""}`}>
+            <h2>4</h2>
           </div>
         </div>
       </div>
