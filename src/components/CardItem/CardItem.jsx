@@ -24,35 +24,39 @@ const CardItem = ({ image, description, price, fermer, _id }) => {
   useEffect(() => {
     dispatch(fetchFermersThunk());
   }, [dispatch]);
+
+
   return (
-    <div key={_id} className={`${styles.cardItem} ${like && styles.active}`}>
-      <div
-        onClick={handleLike}
-        className={like ? styles.like : styles.dislike}
-      ></div>
-      <img src={`${image}`} alt="#" />
-      <div className={styles.info}>
-        <div className={styles.spanBlock}>
-          <span className={styles.description}>
-            {description?.length > 26
-              ? description.slice(0, 25) + "..."
-              : description}
-          </span>
-          <span className={styles.fermer}>
-            <Link to={`/fermer/${currentFermer?._id}`}>
-              {currentFermer?.name}
-            </Link>
-          </span>
-          <span className={styles.price}> Цена: {price} ₽</span>
+    <>
+      <div key={_id} className={`${styles.cardItem} ${like && styles.active}`}>
+        <div
+          onClick={handleLike}
+          className={like ? styles.like : styles.dislike}
+        ></div>
+        <img src={`${image}`} alt="#" />
+        <div className={styles.info}>
+          <div className={styles.spanBlock}>
+            <span className={styles.description}>
+              {description?.length > 26
+                ? description.slice(0, 25) + "..."
+                : description}
+            </span>
+            <span className={styles.fermer}>
+              <Link to={`/fermer/${currentFermer?._id}`}>
+                {currentFermer?.name}
+              </Link>
+            </span>
+            <span className={styles.price}> Цена: {price} ₽</span>
+          </div>
+          <button
+            disabled={!token && true}
+            onClick={() => dispatch(addToBascket({ id, bascket: _id }))}
+          >
+            В корзину
+          </button>
         </div>
-        <button
-          disabled={!token && true}
-          onClick={() => dispatch(addToBascket({ id, bascket: _id }))}
-        >
-          В корзину
-        </button>
       </div>
-    </div>
+    </>
   );
 };
 

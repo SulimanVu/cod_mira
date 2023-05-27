@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import RequestForm from "pages/requestForm/RequestForm";
 import styles from "./index.scss";
 import FermerPage from "pages/FermerPage/FermerPage";
+import { ModalProduct } from "components/ModalProduct/ModalProduct";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,8 @@ function App() {
         <Route path="/profile/address" element={<Address />} />
         <Route path="/profile/contacts" element={<Contacts />} />
         <Route path="/fermer/:id" element={<FermerPage />} />
+
+        <Route path="/modal" element={<ModalProduct />} />
       </Routes>
       <Footer />
     </div>
