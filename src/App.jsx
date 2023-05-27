@@ -16,14 +16,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAuthUser } from "features/applicationSlice";
 import { useEffect, useState } from "react";
 import RequestForm from "pages/requestForm/RequestForm";
-import styles from "./index.scss";
 import FermerPage from "pages/FermerPage/FermerPage";
 import {userActions} from "features/applicationSlice"
 
 function App() {
   const dispatch = useDispatch();
   const id = localStorage.getItem("id");
+
   const token = useSelector((state)=> state.application.token)
+  const [alert, setAlert] = useState(false);
+
 
   useEffect(() => {
     dispatch(userActions.initAuthData());
@@ -44,6 +46,7 @@ function App() {
         <Route path="/profile/address" element={<Address />} />
         <Route path="/profile/contacts" element={<Contacts />} />
         <Route path="/fermer/:id" element={<FermerPage />} />
+        <Route path="/delivery" element={<RequestForm setAlert={setAlert} />} />
       </Routes>
       <Footer />
     </div>
