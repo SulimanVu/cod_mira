@@ -76,13 +76,13 @@ const FermerPage = () => {
                                     </div>
                                     <div>
                                        <button
-                              onClick={handleRated}
-                              className="ratedButton"
+                                onClick={handleRated}
+                                className="ratedButton"
                             >
                               Оценить
                             </button></div>
     </div>
-    {visible ? <Rating id={myId} /> : null}
+    {visible ? <Rating id={fermer} /> : null}
     </>
   );
 };
