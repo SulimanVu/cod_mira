@@ -2,7 +2,7 @@
     width: 80%;
     height: auto;
     margin: auto;
-    margin-bottom: 100px; 
+    margin-bottom: 170px; 
     display: flex; 
     flex-direction: row;
 }
@@ -23,12 +23,16 @@
     justify-content: flex-start;
     padding: 5px 10px;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     border-radius: 8px;
     &:hover {
         background-color: aquamarine;
     }
+}
+
+.backColor {
+    background-color: rgb(177, 253, 228);
 }
 
 .categoryItems {
@@ -40,4 +44,10 @@
     &:hover {
         color: black;
     }
+}
+
+
+.goBack {
+    font-size: 24px;
+    text-decoration:  underline;
 }

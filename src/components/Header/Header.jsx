@@ -16,7 +16,8 @@ const Header = () => {
   const navigate = useNavigate();
   const [activeAuth, setActiveAuth] = useState(false);
   const [activeLogin, setActiveLogin] = useState(false);
-  const authData = useSelector((state) => state.application.authData);
+
+  const authData = useSelector((state)=> state.application.authData)
 
   return (
     <div className={styles.header}>
@@ -42,26 +43,26 @@ const Header = () => {
             />
           ) : (
             <>
+            <button
+            onClick={() => setActiveAuth(!activeAuth)}
+            className={styles.btn_item}>
+            <img src={registerIcon} alt="" />
+          </button>
               <button
-                onClick={() => setActiveAuth(!activeAuth)}
-                className={styles.btn_item}
-              >
-                <img src={registerIcon} alt="" />
-              </button>
-              <button
-                onClick={() => setActiveLogin(!activeLogin)}
-                className={styles.btn_item}
+                  onClick={() => setActiveLogin(!activeLogin)}
+                  className={styles.btn_item}
               >
                 <img src={lkicon} alt="" />
               </button>
-              <button
-                onClick={() => navigate("/bascket")}
-                className={styles.btn_item}
-              >
-                <img src={basketIcon} alt="" />
-              </button>
-            </>
-          )}
+          <button
+            onClick={() => navigate("/bascket")}
+            className={styles.btn_item}
+          >
+            <img src={basketIcon} alt="" />
+          </button>
+          </>
+          )
+}
         </div>
       </div>
       <LoginModal activeLogin={activeLogin} setActiveLogin={setActiveLogin} />

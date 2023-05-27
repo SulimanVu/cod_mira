@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Category.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCategory } from "features/categorySlice";

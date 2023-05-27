@@ -5,7 +5,7 @@
 
 .cards {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -17,8 +17,10 @@
 }
 
 .categoryName {
-  position: absolute;
   font-size: 20px;
   padding-top: 30px;
-  padding-left: 50px;
+}
+
+.pLink {
+  cursor: pointer;
 }
